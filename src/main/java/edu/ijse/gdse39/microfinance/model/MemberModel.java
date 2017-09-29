@@ -25,6 +25,9 @@ public class MemberModel {
     @ManyToOne(cascade = CascadeType.ALL)
     GroupModel groupModel;
 
+    public MemberModel() {
+    }
+
     public MemberModel(String fName, String lName, String mobile, String nic, String address_1, String address_2, String address_3, String hometown, GroupModel groupModel) {
         this.fName = fName;
         this.lName = lName;

@@ -25,4 +25,32 @@ public class RoleModel {
     @Enumerated(EnumType.ORDINAL)
     USER_PRIVILAGE privilage;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public ROLE_TYPE getRole_type() {
+        return role_type;
+    }
+
+    public void setRole_type(ROLE_TYPE role_type) {
+        this.role_type = role_type;
+    }
+
+    public USER_PRIVILAGE getPrivilage() {
+        return privilage;
+    }
+
+    public void setPrivilage(USER_PRIVILAGE privilage) {
+        this.privilage = privilage;
+    }
+
+    public RoleModel(ROLE_TYPE role_type, USER_PRIVILAGE privilage) {
+        this.role_type = role_type;
+        this.privilage = privilage;
+    }
 }
