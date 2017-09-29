@@ -12,6 +12,8 @@ import javax.persistence.*;
 @Table(name = "group_mst")
 public class GroupModel {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer groupId;
@@ -20,10 +22,44 @@ public class GroupModel {
     @ManyToOne(cascade = CascadeType.ALL)
     SocietyModel societyModel;
 
+    public Integer getGroupId() {
+        return groupId;
+    }
 
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
 
+    public String getGroupCode() {
+        return groupCode;
+    }
 
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
+    }
 
+    public String getGroupName() {
+        return groupName;
+    }
 
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
 
+    public SocietyModel getSocietyModel() {
+        return societyModel;
+    }
+
+    public void setSocietyModel(SocietyModel societyModel) {
+        this.societyModel = societyModel;
+    }
+
+    public GroupModel() {
+    }
+
+    public GroupModel(String groupCode, String groupName, SocietyModel societyModel) {
+        this.groupCode = groupCode;
+        this.groupName = groupName;
+        this.societyModel = societyModel;
+    }
 }
