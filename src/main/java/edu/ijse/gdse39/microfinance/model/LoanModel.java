@@ -13,7 +13,7 @@ public class LoanModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer loanId;
     int loanNumber;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     MemberModel memberModel;
     Integer guarentor1;
     Integer guarentor2;
@@ -23,7 +23,7 @@ public class LoanModel {
     String intRateStr;
     @OneToOne
     SystemUser approvedUser;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     LoanProductModel loanProductModel;
 
     public LoanModel() {

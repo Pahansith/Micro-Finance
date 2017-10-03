@@ -12,7 +12,7 @@ public class PaymentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     LoanModel loanModel;
     String paymentDate;
     double paymentAmount;

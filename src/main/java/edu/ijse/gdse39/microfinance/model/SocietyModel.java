@@ -14,7 +14,7 @@ public class SocietyModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer societyId;
     String societyName;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     BranchModel branchModel;
 
     public Integer getSocietyId() {

@@ -17,7 +17,7 @@ public class BranchModel {
     String address;
     String telephone;
     String faxNumber;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     ProvinceModel provinceModel;
 
     public BranchModel() {

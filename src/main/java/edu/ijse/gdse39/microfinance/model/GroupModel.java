@@ -19,7 +19,7 @@ public class GroupModel {
     Integer groupId;
     String groupCode;
     String groupName;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     SocietyModel societyModel;
 
     public Integer getGroupId() {

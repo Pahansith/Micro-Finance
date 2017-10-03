@@ -22,7 +22,7 @@ public class MemberModel {
     String address_2;
     String address_3;
     String hometown;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     GroupModel groupModel;
 
     public MemberModel() {
