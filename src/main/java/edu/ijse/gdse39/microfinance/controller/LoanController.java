@@ -13,27 +13,27 @@ public class LoanController {
 
     @RequestMapping(value = "/newLoan")
     public String  getLoanView(){
-        return "new-loan";
+        return "admin/new-loan";
     }
 
     @RequestMapping(value = "/loanAdd")
     public ModelAndView getLoanAddView(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("add-newLoan");
+        mv.setViewName("admin/add-newLoan");
         return mv;
     }
 
     @RequestMapping(value = "/branch-recommendation")
     public ModelAndView getBranchRecomView(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("branch-recom");
+        mv.setViewName("admin/branch-recom");
         return mv;
     }
 
     @RequestMapping(value = "/issue-loan")
     public ModelAndView issueLoan(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("issue-loan");
+        mv.setViewName("admin/issue-loan");
         return mv;
 
     }

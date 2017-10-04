@@ -112,13 +112,13 @@
                     <version>2.4</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>SpringMVCJPA2HibernateManyToManyCRUDExample</warName>
+                        <warName>Micro-Finance</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>SpringMVCJPA2HibernateManyToManyCRUDExample</finalName>
+        <finalName>Micro-Finance</finalName>
     </build>
 
 

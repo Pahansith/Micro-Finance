@@ -17,7 +17,7 @@ public class LoginController {
                                     @RequestParam(value = "password") String password){
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin-home");
+        mv.setViewName("admin/admin-home");
         return mv;
 
     }

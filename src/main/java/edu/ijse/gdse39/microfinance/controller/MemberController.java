@@ -12,8 +12,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController {
 
-    @RequestMapping(value = "/home")
-    public String goToHome(){
-        return "home";
-    }
 }

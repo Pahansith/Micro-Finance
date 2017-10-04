@@ -148,7 +148,7 @@
 <!-- Search Bar -->
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-        <h2>Search Your Customer</h2>
+        <h2>Issue Customer Loans</h2>
         <p>Search by 3 steps. 1st you should define the province of the customer, then the branch and finally the
             society</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
