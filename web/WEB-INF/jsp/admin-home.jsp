@@ -103,10 +103,10 @@
                                 <a href="newLoan">New Loan</a>
                             </li>
                             <li>
-                                <a href="#">Branch Manager Approval</a>
+                                <a href="branch-recommendation">Branch Manager Approval</a>
                             </li>
                             <li>
-                                <a href="#">Loan Issue</a>
+                                <a href="issue-loan">Loan Issue</a>
                             </li>
                         </ul>
                     </li>

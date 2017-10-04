@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Pahansith
   Date: 10/4/2017
-  Time: 10:18 AM
+  Time: 4:05 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>New Loan</title>
+    <title>Issue Loan</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -203,11 +203,11 @@
         <div class="form-group">
             <table class="table table-responsive">
                 <thead>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>JHS</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>JHS</th>
                 </thead>
                 <tbody>
                 <tr>
@@ -224,7 +224,7 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="button" onclick="goLoanAddView()">New Loan</button>
+                        <button class="btn btn-default" type="button" onclick="issueLoan()">Issue Loan</button>
                     </td>
                 </tr>
                 <tr>
@@ -241,7 +241,7 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit">New Loan</button>
+                        <button class="btn btn-default" type="submit">Issue Loan</button>
                     </td>
                 </tr>
                 <tr>
@@ -258,7 +258,7 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit">New Loan</button>
+                        <button class="btn btn-default" type="submit">Issue Loan</button>
                     </td>
                 </tr>
                 <tr>
@@ -275,7 +275,7 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit">New Loan</button>
+                        <button class="btn btn-default" type="submit">Issue Loan</button>
                     </td>
                 </tr>
                 </tbody>
@@ -285,8 +285,18 @@
 </div>
 
 <script>
-    function goLoanAddView() {
-        window.open("loanAdd")
+    function issueLoan() {
+        bootbox.alert({
+            message : "Loan Issued",
+            backdrop : true,
+            selected : false
+        }).find('.modal-content').css({
+            'margin-top': 225
+        });
+
+        bootbox.dialog({show: false})
+            .off("shown.bs.modal")
+            .modal("show");
     }
 
 </script>
@@ -307,7 +317,7 @@
 
 <script src="assets/js/icheck.min.js"></script>
 <script src="assets/js/price-range.js"></script>
-
+<script src="assets/js/bootbox.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
