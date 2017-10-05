@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
-  Date: 10/4/2017
-  Time: 4:05 PM
+  Date: 10/5/2017
+  Time: 9:55 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Issue Loan</title>
+    <title>Loan Schedule</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -148,13 +148,12 @@
 <!-- Search Bar -->
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-        <h2>Issue Customer Loans</h2>
-        <p>Search by 3 steps. 1st you should define the province of the customer, then the branch and finally the
-            society</p>
+        <h2>Customer Loan Schedule</h2>
+        <p>Search by 4 steps. 1st you should define the province of the customer, then the branch and the
+            society an finally enter loan number</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
             <form action="" class=" form-inline" style="margin-left: 10px;">
-                <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
 
                 <div class="form-group">
                     <select id="lunchBegins1" class="selectpicker" data-live-search="true"
@@ -192,6 +191,9 @@
                         <option>kyoto , shibua</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Loan Number">
+                </div>
                 <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
@@ -203,11 +205,11 @@
         <div class="form-group">
             <table class="table table-responsive">
                 <thead>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>JHS</th>
+                    <th>Name</th>
+                    <th>Name</th>
+                    <th>Name</th>
+                    <th>Name</th>
+
                 </thead>
                 <tbody>
                 <tr>
@@ -223,9 +225,7 @@
                     <td>
                         akjs
                     </td>
-                    <td>
-                        <button class="btn btn-default" type="button" onclick="issueLoan()">Issue Loan</button>
-                    </td>
+
                 </tr>
                 <tr>
                     <td>
@@ -240,9 +240,7 @@
                     <td>
                         akjs
                     </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">Issue Loan</button>
-                    </td>
+
                 </tr>
                 <tr>
                     <td>
@@ -257,9 +255,6 @@
                     <td>
                         akjs
                     </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">Issue Loan</button>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -273,9 +268,6 @@
                     </td>
                     <td>
                         akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">Issue Loan</button>
                     </td>
                 </tr>
                 </tbody>
@@ -285,11 +277,11 @@
 </div>
 
 <script>
-    function issueLoan() {
+    /*function payLoan() {
         bootbox.alert({
-            message : "Loan Issued",
-            backdrop : true,
-            selected : false
+            message: "Payment Successfully Added",
+            backdrop: true,
+            selected: false
         }).find('.modal-content').css({
             'margin-top': 225
         });
@@ -297,7 +289,7 @@
         bootbox.dialog({show: false})
             .off("shown.bs.modal")
             .modal("show");
-    }
+    }*/
 
 </script>
 

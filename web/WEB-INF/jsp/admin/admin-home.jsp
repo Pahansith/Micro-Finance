@@ -114,10 +114,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Loan Operation<b class="caret"></b></a>
                         <ul class="dropdown-menu navbar-nav">
                             <li>
-                                <a href="#">Loan Payment</a>
+                                <a href="loan-payment">Loan Payment</a>
                             </li>
                             <li>
-                                <a href="#">Loan Schedule</a>
+                                <a href="loan-scedule">Loan Schedule</a>
                             </li>
                             <li>
                                 <a href="#">Loan Close</a>

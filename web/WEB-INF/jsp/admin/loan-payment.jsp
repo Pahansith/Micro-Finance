@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
-  Date: 10/4/2017
-  Time: 4:05 PM
+  Date: 10/5/2017
+  Time: 8:28 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Issue Loan</title>
+    <title>Pay Loan</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -148,7 +148,7 @@
 <!-- Search Bar -->
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-        <h2>Issue Customer Loans</h2>
+        <h2>Customer Payments</h2>
         <p>Search by 3 steps. 1st you should define the province of the customer, then the branch and finally the
             society</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
@@ -203,11 +203,12 @@
         <div class="form-group">
             <table class="table table-responsive">
                 <thead>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>JHS</th>
+                    <th>Name</th>
+                    <th>Name</th>
+                    <th>Name</th>
+                    <th>Name</th>
+                    <th>HHS</th>
+                    <th>JHS</th>
                 </thead>
                 <tbody>
                 <tr>
@@ -224,7 +225,10 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="button" onclick="issueLoan()">Issue Loan</button>
+                        <input type="text" placeholder="Amount" name="pay" class="form-control">
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick="payLoan()">Pay</button>
                     </td>
                 </tr>
                 <tr>
@@ -241,7 +245,10 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit">Issue Loan</button>
+                        <input type="text" placeholder="Amount" name="pay" class="form-control">
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick="payLoan()">Pay</button>
                     </td>
                 </tr>
                 <tr>
@@ -258,7 +265,10 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit">Issue Loan</button>
+                        <input type="text" placeholder="Amount" name="pay" class="form-control">
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick="payLoan()">Pay</button>
                     </td>
                 </tr>
                 <tr>
@@ -275,7 +285,10 @@
                         akjs
                     </td>
                     <td>
-                        <button class="btn btn-default" type="submit">Issue Loan</button>
+                        <input type="text" placeholder="Amount" name="pay" class="form-control">
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick="payLoan()">Pay</button>
                     </td>
                 </tr>
                 </tbody>
@@ -285,9 +298,9 @@
 </div>
 
 <script>
-    function issueLoan() {
+    function payLoan() {
         bootbox.alert({
-            message : "Loan Issued",
+            message : "Payment Successfully Added",
             backdrop : true,
             selected : false
         }).find('.modal-content').css({
