@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
-  Date: 10/4/2017
-  Time: 2:49 PM
+  Date: 10/5/2017
+  Time: 12:27 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,7 +15,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add New Loan</title>
+    <title>Edit Member</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -132,7 +132,7 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Member</a>
+                            <a href="new-member">New Member</a>
                         </li>
                         <li>
                             <a href="#">Update Details</a>
@@ -180,50 +180,46 @@
                     <form action="" method="">
                         <div class="wizard-header">
                             <h3>
-                                <b>Submit</b> Approve Loan <br>
-                                <small>View Client Loan Details and Approve</small>
+                                <b>Submit</b> New Customer <br>
+                                <small>Add Customer Details</small>
                             </h3>
                         </div>
 
                         <ul>
-                            <li><a href="#step1" data-toggle="tab">Credit Manager Recommendation </a></li>
-                            <li><a href="#step2" data-toggle="tab">Recommend For Loan </a></li>
+                            <li><a href="#step1" data-toggle="tab">Basic Details </a></li>
+                            <li><a href="#step2" data-toggle="tab">Contact Details </a></li>
+                            <li><a href="#step3" data-toggle="tab">Property/Business Detail </a></li>
+                            <li><a href="#step4" data-toggle="tab">Account Details </a></li>
                         </ul>
 
                         <div class="tab-content">
                             <div class="tab-pane" id="step1">
-                                <h4 class="info-text">Recommendation About Customer </h4>
+                                <h4 class="info-text">Basic Details </h4>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="l-history">Loan History :</label>
+                                            <label for="l-history">Salutation :</label>
                                             <select id="l-history" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
+                                                <option>Mr </option>
+                                                <option>Mrs</option>
+                                                <option>Ms</option>
+                                                <option>Ven</option>
+                                                <option>Dr</option>
 
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="c-properties">Customer Properties :</label>
-                                            <select id="c-properties" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
+                                            <label for="fName">First Name :</label>
+                                            <input id="fName" class="l-amt" value="" placeholder="First Name" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
-                                            <label for="c-business">Customer Business :</label>
-                                            <select id="c-business" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
+                                            <label for="lName">Last Name :</label><br>
+                                            <input id="lName" class="l-amt" value="" placeholder="Last Name" name="fName" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nic">NIC :</label>
+                                            <input id="nic" class="l-amt" value="" placeholder="NIC" name="fName" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -232,46 +228,119 @@
 
 
                             <div class="tab-pane" id="step2">
-                                <h4 class="info-text">Loan Information </h4>
+                                <h4 class="info-text">Contact Details </h4>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="l-prod">Loan Product :</label>
-                                            <select id="l-prod" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
+                                            <label for="address-1">Address Line 1 :</label>
+                                            <input id="address-1" class="l-amt" value="" placeholder="Address Line 1" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
-                                            <label for="l-amt">Loan Amount :</label>
-                                            <input id="l-amt" class="l-amt" value="" placeholder="Enter Loan Amount" name="property_video" type="text">
+                                            <label for="address-2">Address Line 2 :</label>
+                                            <input id="address-2" class="l-amt" value="" placeholder="Address Line 2" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
-                                            <label for="l-term">Loan Term :</label><br>
-                                            <span id="l-term" style="margin-left: 15px;">48W</span>
+                                            <label for="address-3">Address Line 3 :</label>
+                                            <input id="address-3" class="l-amt" value="" placeholder="Address Line 3" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
-                                            <label for="l-rate">Interest Rate :</label><br>
-                                            <span id="l-rate" style="margin-left: 15px;">12.00%</span>
+                                            <label for="hometown">Home Town :</label>
+                                            <input id="hometown" class="l-amt" value="" placeholder="Home Town" name="fName" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mobile">Mobile :</label><br>
+                                            <input id="mobile" class="l-amt" value="" placeholder="Mobile" name="fName" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telephone">Telephone :</label>
+                                            <input id="telephone" class="l-amt" value="" placeholder="Telephone" name="fName" type="text">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!--  End step 2 -->
 
+                            <div class="tab-pane" id="step3">
+                                <h4 class="info-text">Property Details </h4>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="business">Business Status :</label>
+                                            <select id="business" class="selectpicker show-tick form-control">
+                                                <option> -Status- </option>
+                                                <option>Owned</option>
+                                                <option>Government</option>
+                                                <option>Private</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="financial">Financial Status :</label>
+                                            <select id="financial" class="selectpicker show-tick form-control">
+                                                <option> -Status- </option>
+                                                <option>Good</option>
+                                                <option>Potentially Growth</option>
+                                                <option>Stable</option>
+                                                <option>Risky</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="step4">
+                                <h4 class="info-text">Property Details </h4>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="province">Province :</label>
+                                            <select id="province" class="selectpicker show-tick form-control">
+                                                <option> -Status- </option>
+                                                <option>Owned</option>
+                                                <option>Government</option>
+                                                <option>Private</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="branch">Branch :</label>
+                                            <select id="branch" class="selectpicker show-tick form-control">
+                                                <option> -Status- </option>
+                                                <option>Good</option>
+                                                <option>Potentially Growth</option>
+                                                <option>Stable</option>
+                                                <option>Risky</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="society">Society :</label>
+                                            <select id="society" class="selectpicker show-tick form-control">
+                                                <option> -Status- </option>
+                                                <option>Good</option>
+                                                <option>Potentially Growth</option>
+                                                <option>Stable</option>
+                                                <option>Risky</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group">Group :</label>
+                                            <select id="group" class="selectpicker show-tick form-control">
+                                                <option> -Status- </option>
+                                                <option>Good</option>
+                                                <option>Potentially Growth</option>
+                                                <option>Stable</option>
+                                                <option>Risky</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
 
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-primary' name='next' value='Next'/>
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Approve' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
-                            </div>
-                            &nbsp;
-                            <div class="pull-right">
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Decline' onclick="submitRecords()" />
+                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Save' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
                             </div>
                             <div class="pull-left">
                                 <input type='button' class='btn btn-previous btn-default' name='previous'

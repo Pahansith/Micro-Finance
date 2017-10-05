@@ -38,4 +38,11 @@ public class LoanController {
 
     }
 
+    @RequestMapping(value = "branch-search")
+    public ModelAndView getBranchSearchView(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("admin/search-branchRecom");
+        return mv;
+    }
+
 }

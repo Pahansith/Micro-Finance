@@ -11,24 +11,45 @@ import java.util.List;
 @Table(name = "member_mst")
 public class MemberModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer memberId;
-    String fName;
-    String lName;
-    String mobile;
-    String nic;
-    String address_1;
-    String address_2;
-    String address_3;
-    String hometown;
-    @ManyToOne
-    GroupModel groupModel;
-
-    public MemberModel() {
+    public enum SALUTATION{
+        MR,Ms,Mrs,Ven,Dr
     }
 
-    public MemberModel(String fName, String lName, String mobile, String nic, String address_1, String address_2, String address_3, String hometown, GroupModel groupModel) {
+    public enum EMPLOYEE_STATUS{
+        OWNED,PRIVATE,GOVERNMENT
+    }
+
+    public enum FINANCIAL_STATUS{
+        GOOD,POTENTIALLY_GROWTH,STABLE,RISKY
+    }
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer memberId;
+    private String fName;
+    private String lName;
+    private String mobile;
+    private String nic;
+    private String address_1;
+    private String address_2;
+    private String address_3;
+    private String hometown;
+    @Enumerated(EnumType.ORDINAL)
+    private SALUTATION salutation;
+    @Enumerated(EnumType.ORDINAL)
+    private EMPLOYEE_STATUS employeeStatus;
+    @Enumerated(EnumType.ORDINAL)
+    private FINANCIAL_STATUS financialStatus;
+
+
+
+    @ManyToOne
+    private GroupModel groupModel;
+
+    public MemberModel(String fName, String lName, String mobile, String nic, String address_1, String address_2,
+                       String address_3, String hometown, SALUTATION salutation, EMPLOYEE_STATUS employeeStatus, FINANCIAL_STATUS financialStatus,
+                       GroupModel groupModel) {
         this.fName = fName;
         this.lName = lName;
         this.mobile = mobile;
@@ -37,13 +58,24 @@ public class MemberModel {
         this.address_2 = address_2;
         this.address_3 = address_3;
         this.hometown = hometown;
+        this.salutation = salutation;
+        this.employeeStatus = employeeStatus;
         this.groupModel = groupModel;
+        this.financialStatus = financialStatus;
     }
 
-
+    public MemberModel() {}
 
     public Integer getMemberId() {
         return memberId;
+    }
+
+    public FINANCIAL_STATUS getFinancialStatus() {
+        return financialStatus;
+    }
+
+    public void setFinancialStatus(FINANCIAL_STATUS financialStatus) {
+        this.financialStatus = financialStatus;
     }
 
     public void setMemberId(Integer memberId) {
@@ -114,6 +146,22 @@ public class MemberModel {
         this.hometown = hometown;
     }
 
+    public SALUTATION getSalutation() {
+        return salutation;
+    }
+
+    public void setSalutation(SALUTATION salutation) {
+        this.salutation = salutation;
+    }
+
+    public EMPLOYEE_STATUS getEmployeeStatus() {
+        return employeeStatus;
+    }
+
+    public void setEmployeeStatus(EMPLOYEE_STATUS employeeStatus) {
+        this.employeeStatus = employeeStatus;
+    }
+
     public GroupModel getGroupModel() {
         return groupModel;
     }
@@ -121,4 +169,8 @@ public class MemberModel {
     public void setGroupModel(GroupModel groupModel) {
         this.groupModel = groupModel;
     }
+
+
+
+
 }

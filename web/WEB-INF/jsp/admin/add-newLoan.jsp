@@ -108,7 +108,7 @@
                             <a href="newLoan">New Loan</a>
                         </li>
                         <li>
-                            <a href="branch-recommendation">Branch Manager Approval</a>
+                            <a href="branch-search">Branch Manager Approval</a>
                         </li>
                         <li>
                             <a href="issue-loan">Loan Issue</a>
@@ -136,6 +136,30 @@
                         </li>
                         <li>
                             <a href="#">Update Details</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown ymm-sw " data-wow-delay="0.1s">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Branch
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu navbar-nav">
+                        <li>
+                            <a href="#">New Branch</a>
+                        </li>
+                        <li>
+                            <a href="#">Branch List</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown ymm-sw " data-wow-delay="0.1s">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Society
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu navbar-nav">
+                        <li>
+                            <a href="#">New Society</a>
+                        </li>
+                        <li>
+                            <a href="#">Society List</a>
                         </li>
                     </ul>
                 </li>

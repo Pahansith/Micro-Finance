@@ -1,21 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
-  Date: 10/4/2017
-  Time: 2:49 PM
+  Date: 10/5/2017
+  Time: 8:47 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add New Loan</title>
+    <title>Branch Manager Recommendation</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -40,11 +35,13 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/owl.theme.css">
     <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <link rel="stylesheet" href="assets/css/wizard.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
 </head>
 <body>
+
+
 <div id="preloader">
     <div id="status">&nbsp;</div>
 </div>
@@ -168,159 +165,171 @@
     </div><!-- /.container-fluid -->
 </nav>
 <!-- End of nav bar -->
-<!-- End page header -->
 
-<!-- property area -->
-<div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
-    <div class="container">
-        <div class="clearfix">
-            <div class="wizard-container">
+<!-- Search Bar -->
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+        <h2>Branch Manager Approval</h2>
+        <p>Search by 3 steps. 1st you should define the province of the customer, then the branch and finally the
+            society</p>
+        <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-                <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                    <form action="" method="">
-                        <div class="wizard-header">
-                            <h3>
-                                <b>Submit</b> Approve Loan <br>
-                                <small>View Client Loan Details and Approve</small>
-                            </h3>
-                        </div>
+            <form action="" class=" form-inline" style="margin-left: 10px;">
+                <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
 
-                        <ul>
-                            <li><a href="#step1" data-toggle="tab">Credit Manager Recommendation </a></li>
-                            <li><a href="#step2" data-toggle="tab">Recommend For Loan </a></li>
-                        </ul>
+                <div class="form-group">
+                    <select id="lunchBegins1" class="selectpicker" data-live-search="true"
+                            data-live-search-style="begins" title="Select Province">
 
-                        <div class="tab-content">
-                            <div class="tab-pane" id="step1">
-                                <h4 class="info-text">Recommendation About Customer </h4>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="l-history">Loan History :</label>
-                                            <select id="l-history" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="c-properties">Customer Properties :</label>
-                                            <select id="c-properties" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="c-business">Customer Business :</label>
-                                            <select id="c-business" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  End step 1 -->
-
-
-                            <div class="tab-pane" id="step2">
-                                <h4 class="info-text">Loan Information </h4>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="l-prod">Loan Product :</label>
-                                            <select id="l-prod" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="l-amt">Loan Amount :</label>
-                                            <input id="l-amt" class="l-amt" value="" placeholder="Enter Loan Amount" name="property_video" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="l-term">Loan Term :</label><br>
-                                            <span id="l-term" style="margin-left: 15px;">48W</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="l-rate">Interest Rate :</label><br>
-                                            <span id="l-rate" style="margin-left: 15px;">12.00%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  End step 2 -->
-
-                        </div>
-
-                        <div class="wizard-footer">
-                            <div class="pull-right">
-                                <input type='button' class='btn btn-next btn-primary' name='next' value='Next'/>
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Approve' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
-                            </div>
-                            &nbsp;
-                            <div class="pull-right">
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Decline' onclick="submitRecords()" />
-                            </div>
-                            <div class="pull-left">
-                                <input type='button' class='btn btn-previous btn-default' name='previous'
-                                       value='Previous'/>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </form>
+                        <option>New york, CA</option>
+                        <option>Paris</option>
+                        <option>Casablanca</option>
+                        <option>Tokyo</option>
+                        <option>Marraekch</option>
+                        <option>kyoto , shibua</option>
+                    </select>
                 </div>
-                <!-- End submit form -->
-            </div>
+                <div class="form-group">
+                    <select id="lunchBegins2" class="selectpicker" data-live-search="true"
+                            data-live-search-style="begins" title="Select Branch">
+
+                        <option>New york, CA</option>
+                        <option>Paris</option>
+                        <option>Casablanca</option>
+                        <option>Tokyo</option>
+                        <option>Marraekch</option>
+                        <option>kyoto , shibua</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="lunchBegins3" class="selectpicker" data-live-search="true"
+                            data-live-search-style="begins" title="Select Society">
+
+                        <option>New york, CA</option>
+                        <option>Paris</option>
+                        <option>Casablanca</option>
+                        <option>Tokyo</option>
+                        <option>Marraekch</option>
+                        <option>kyoto , shibua</option>
+                    </select>
+                </div>
+                <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+        <div class="form-group">
+            <table class="table table-responsive">
+                <thead>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>JHS</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" onclick="goToBranchRecomView()">Recommend</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="submit">Recommend</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="submit">Recommend</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        akjs
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="submit">Recommend</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
 <script>
-    function submitRecords() {
-        bootbox.alert({
-            message : "Added Succesfull",
-            backdrop : true,
-            selected : false
-        }).find('.modal-content').css({
-            'margin-top': 225
-        });
 
-        bootbox.dialog({show: false})
-            .off("shown.bs.modal")
-            .modal("show");
+    function goToBranchRecomView() {
+        window.open("branch-recommendation")
     }
+
 </script>
 
+
 <script src="assets/js/modernizr-2.6.2.min.js"></script>
-<script src="assets/js//jquery-1.10.2.min.js"></script>
+
+<script src="assets/js/jquery-1.10.2.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/bootstrap-select.min.js"></script>
 <script src="assets/js/bootstrap-hover-dropdown.js"></script>
+
 <script src="assets/js/easypiechart.min.js"></script>
 <script src="assets/js/jquery.easypiechart.min.js"></script>
+
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/wow.js"></script>
+
 <script src="assets/js/icheck.min.js"></script>
-
 <script src="assets/js/price-range.js"></script>
-<script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-<script src="assets/js/jquery.validate.min.js"></script>
-<script src="assets/js/wizard.js"></script>
-<script src="assets/js/bootbox.js"></script>
+
 <script src="assets/js/main.js"></script>
-
-
 </body>
 </html>
