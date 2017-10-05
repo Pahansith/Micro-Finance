@@ -122,9 +122,6 @@
                         <li>
                             <a href="loan-scedule">Loan Schedule</a>
                         </li>
-                        <li>
-                            <a href="#">Loan Close</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown ymm-sw " data-wow-delay="0.1s">
