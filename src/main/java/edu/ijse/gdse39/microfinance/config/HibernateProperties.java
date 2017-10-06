@@ -32,7 +32,7 @@ public class HibernateProperties {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "app.model" });
+        sessionFactory.setPackagesToScan(new String[] { "edu.ijse.gdse39.microfinance.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

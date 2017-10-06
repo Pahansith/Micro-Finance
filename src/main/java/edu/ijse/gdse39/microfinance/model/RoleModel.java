@@ -20,9 +20,9 @@ public class RoleModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     ROLE_TYPE role_type;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     USER_PRIVILAGE privilage;
 
     public Integer getId() {

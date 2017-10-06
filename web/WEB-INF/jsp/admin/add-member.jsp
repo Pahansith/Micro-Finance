@@ -197,8 +197,8 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="l-history">Salutation :</label>
-                                            <select id="l-history" class="selectpicker show-tick form-control">
+                                            <label for="salutation">Salutation :</label>
+                                            <select id="salutation" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Mr </option>
                                                 <option>Mrs</option>
@@ -357,17 +357,11 @@
 
 <script>
     function submitRecords() {
-        bootbox.alert({
-            message : "Added Succesfull",
-            backdrop : true,
-            selected : false
-        }).find('.modal-content').css({
-            'margin-top': 225
-        });
 
-        bootbox.dialog({show: false})
-            .off("shown.bs.modal")
-            .modal("show");
+
+
+
+
     }
 </script>
 

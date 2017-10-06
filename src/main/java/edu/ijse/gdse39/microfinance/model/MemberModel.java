@@ -35,11 +35,11 @@ public class MemberModel {
     private String address_2;
     private String address_3;
     private String hometown;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private SALUTATION salutation;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private EMPLOYEE_STATUS employeeStatus;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private FINANCIAL_STATUS financialStatus;
 
 
