@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -136,7 +135,7 @@
                             <a href="new-member">New Member</a>
                         </li>
                         <li>
-                            <a href="#">Update Details</a>
+                            <a href="update-member">Update Details</a>
                         </li>
                     </ul>
                 </li>
@@ -145,10 +144,10 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Branch</a>
+                            <a href="add-branch">New Branch</a>
                         </li>
                         <li>
-                            <a href="#">Branch List</a>
+                            <a href="branchList">Branch List</a>
                         </li>
                     </ul>
                 </li>
@@ -157,10 +156,10 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Society</a>
+                            <a href="add-society">New Society</a>
                         </li>
                         <li>
-                            <a href="#">Society List</a>
+                            <a href="societyList">Society List</a>
                         </li>
                     </ul>
                 </li>
@@ -176,7 +175,6 @@
     <div class="container">
         <div class="clearfix">
             <div class="wizard-container">
-
                 <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                     <form action="" method="">
                         <div class="wizard-header">
@@ -212,15 +210,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="fName">First Name :</label>
-                                            <input id="fName" class="l-amt" value="" placeholder="First Name" name="fName" type="text">
+                                            <input id="fName" class="form-control" value="" placeholder="First Name" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="lName">Last Name :</label><br>
-                                            <input id="lName" class="l-amt" value="" placeholder="Last Name" name="fName" type="text">
+                                            <input id="lName" class="form-control" value="" placeholder="Last Name" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="nic">NIC :</label>
-                                            <input id="nic" class="l-amt" value="" placeholder="NIC" name="fName" type="text">
+                                            <input id="nic" class="form-control" value="" placeholder="NIC" name="fName" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -234,27 +232,27 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="address-1">Address Line 1 :</label>
-                                            <input id="address-1" class="l-amt" value="" placeholder="Address Line 1" name="fName" type="text">
+                                            <input id="address-1" class="form-control" value="" placeholder="Address Line 1" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="address-2">Address Line 2 :</label>
-                                            <input id="address-2" class="l-amt" value="" placeholder="Address Line 2" name="fName" type="text">
+                                            <input id="address-2" class="form-control" value="" placeholder="Address Line 2" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="address-3">Address Line 3 :</label>
-                                            <input id="address-3" class="l-amt" value="" placeholder="Address Line 3" name="fName" type="text">
+                                            <input id="address-3" class="form-control" value="" placeholder="Address Line 3" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="hometown">Home Town :</label>
-                                            <input id="hometown" class="l-amt" value="" placeholder="Home Town" name="fName" type="text">
+                                            <input id="hometown" class="form-control" value="" placeholder="Home Town" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="mobile">Mobile :</label><br>
-                                            <input id="mobile" class="l-amt" value="" placeholder="Mobile" name="fName" type="text">
+                                            <input id="mobile" class="form-control" value="" placeholder="Mobile" name="fName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="telephone">Telephone :</label>
-                                            <input id="telephone" class="l-amt" value="" placeholder="Telephone" name="fName" type="text">
+                                            <input id="telephone" class="form-control" value="" placeholder="Telephone" name="fName" type="text">
                                         </div>
                                     </div>
                                 </div>

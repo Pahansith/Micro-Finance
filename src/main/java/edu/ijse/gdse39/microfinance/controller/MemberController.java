@@ -13,10 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MemberController {
 
-    @RequestMapping(value = "member-add")
+    @RequestMapping(value = "/member-add")
     public ModelAndView addNewMemberView(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("admin/add-member");
         return mv;
+    }
+
+    @RequestMapping(value = "/update-member")
+    public String getMemberUpdateView(){
+        return "admin/edit-member";
     }
 }

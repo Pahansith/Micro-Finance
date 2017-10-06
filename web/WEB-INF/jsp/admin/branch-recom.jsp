@@ -132,10 +132,10 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Member</a>
+                            <a href="member-add">New Member</a>
                         </li>
                         <li>
-                            <a href="#">Update Details</a>
+                            <a href="update-member">Update Details</a>
                         </li>
                     </ul>
                 </li>
@@ -144,10 +144,10 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Branch</a>
+                            <a href="add-branch">New Branch</a>
                         </li>
                         <li>
-                            <a href="#">Branch List</a>
+                            <a href="branchList">Branch List</a>
                         </li>
                     </ul>
                 </li>

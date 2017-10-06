@@ -14,8 +14,36 @@ public class SocietyModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer societyId;
     String societyName;
+    String presidentName;
+    String secretaryName;
     @ManyToOne
     BranchModel branchModel;
+
+    public SocietyModel() {
+    }
+
+    public SocietyModel(String societyName, String presidentName, String secretaryName, BranchModel branchModel) {
+        this.societyName = societyName;
+        this.presidentName = presidentName;
+        this.secretaryName = secretaryName;
+        this.branchModel = branchModel;
+    }
+
+    public String getPresidentName() {
+        return presidentName;
+    }
+
+    public void setPresidentName(String presidentName) {
+        this.presidentName = presidentName;
+    }
+
+    public String getSecretaryName() {
+        return secretaryName;
+    }
+
+    public void setSecretaryName(String secretaryName) {
+        this.secretaryName = secretaryName;
+    }
 
     public Integer getSocietyId() {
         return societyId;
@@ -41,8 +69,4 @@ public class SocietyModel {
         this.branchModel = branchModel;
     }
 
-    public SocietyModel(String societyName, BranchModel branchModel) {
-        this.societyName = societyName;
-        this.branchModel = branchModel;
-    }
 }

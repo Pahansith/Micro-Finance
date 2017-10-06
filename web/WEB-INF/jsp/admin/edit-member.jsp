@@ -135,7 +135,7 @@
                             <a href="new-member">New Member</a>
                         </li>
                         <li>
-                            <a href="#">Update Details</a>
+                            <a href="update-member">Update Details</a>
                         </li>
                     </ul>
                 </li>
@@ -144,10 +144,10 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Branch</a>
+                            <a href="add-branch">New Branch</a>
                         </li>
                         <li>
-                            <a href="#">Branch List</a>
+                            <a href="branchList">Branch List</a>
                         </li>
                     </ul>
                 </li>
@@ -156,10 +156,10 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu navbar-nav">
                         <li>
-                            <a href="#">New Society</a>
+                            <a href="add-society">New Society</a>
                         </li>
                         <li>
-                            <a href="#">Society List</a>
+                            <a href="societyList">Society List</a>
                         </li>
                     </ul>
                 </li>
@@ -169,6 +169,69 @@
 </nav>
 <!-- End of nav bar -->
 <!-- End page header -->
+
+<!-- Search Bar -->
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+        <h2>Edit Customer Details</h2>
+        <p>Search by 4 steps. 1st you should define the province of the customer, then the branch and society finally the Name of Customer</p>
+        <div class="search-form wow pulse" data-wow-delay="0.8s">
+
+            <form action="" class=" form-inline" style="margin-left: 10px;">
+                <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
+
+                <div class="form-group" style="width: 22%;">
+                    <select id="lunchBegins1" class="selectpicker" data-live-search="true"
+                            data-live-search-style="begins" title="Select Province">
+                        <option>New york, CA</option>
+                        <option>Paris</option>
+                        <option>Casablanca</option>
+                        <option>Tokyo</option>
+                        <option>Marraekch</option>
+                        <option>kyoto , shibua</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="lunchBegins2" class="selectpicker" data-live-search="true"
+                            data-live-search-style="begins" title="Select Branch">
+
+                        <option>New york, CA</option>
+                        <option>Paris</option>
+                        <option>Casablanca</option>
+                        <option>Tokyo</option>
+                        <option>Marraekch</option>
+                        <option>kyoto , shibua</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="lunchBegins3" class="selectpicker" data-live-search="true"
+                            data-live-search-style="begins" title="Select Society">
+
+                        <option>New york, CA</option>
+                        <option>Paris</option>
+                        <option>Casablanca</option>
+                        <option>Tokyo</option>
+                        <option>Marraekch</option>
+                        <option>kyoto , shibua</option>
+                    </select>
+                </div>
+                    <div class="form-group">
+                        <select id="lunchBegins4" class="selectpicker" data-live-search="true"
+                                data-live-search-style="begins" title="Select Member">
+
+                            <option>New york, CA</option>
+                            <option>Paris</option>
+                            <option>Casablanca</option>
+                            <option>Tokyo</option>
+                            <option>Marraekch</option>
+                            <option>kyoto , shibua</option>
+                        </select>
+                    </div>
+                <button class="btn search-btn" type="submit"><i class="fa fa-pencil-square-o"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- property area -->
 <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
@@ -180,7 +243,7 @@
                     <form action="" method="">
                         <div class="wizard-header">
                             <h3>
-                                <b>Submit</b> New Customer <br>
+                                <b>Submit</b> Edit Customer <br>
                                 <small>Add Customer Details</small>
                             </h3>
                         </div>
