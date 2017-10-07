@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -181,12 +182,9 @@
                     <select id="lunchBegins1" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Province">
 
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
+                        <c:forEach items="${provinceList}" var="list">
+                            <option>${list.provinceName}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="form-group">

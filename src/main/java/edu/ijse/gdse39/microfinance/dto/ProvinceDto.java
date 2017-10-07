@@ -1,16 +1,11 @@
-package edu.ijse.gdse39.microfinance.model;
-
-import javax.persistence.*;
+package edu.ijse.gdse39.microfinance.dto;
 
 /**
- * @author Pahansith on 9/29/2017
+ * @author Pahansith on 10/7/2017
  * @project MicroFinance
  */
-@Entity
-@Table(name = "province_mst")
-public class ProvinceModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+public class ProvinceDto {
     Integer provinceId;
     String provinceName;
 
@@ -30,11 +25,8 @@ public class ProvinceModel {
         this.provinceName = provinceName;
     }
 
-    public ProvinceModel(Integer provinceId, String provinceName) {
+    public ProvinceDto(Integer provinceId, String provinceName) {
         this.provinceId = provinceId;
         this.provinceName = provinceName;
-    }
-
-    public ProvinceModel() {
     }
 }
