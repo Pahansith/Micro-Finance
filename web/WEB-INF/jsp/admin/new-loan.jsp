@@ -179,36 +179,22 @@
                 <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
 
                 <div class="form-group">
-                    <select id="lunchBegins1" class="selectpicker" data-live-search="true"
+                    <select id="provinceList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Province">
 
                         <c:forEach items="${provinceList}" var="list">
-                            <option>${list.provinceName}</option>
+                            <option value="${list.provinceId}">${list.provinceName}</option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select id="lunchBegins2" class="selectpicker" data-live-search="true"
+                    <select id="branchList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Branch">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select id="lunchBegins3" class="selectpicker" data-live-search="true"
+                    <select id="societyList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Society">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
                 </div>
                 <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -229,87 +215,28 @@
                     <th>JHS</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="button" onclick="goLoanAddView()">New Loan</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">New Loan</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">New Loan</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">New Loan</button>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            akjs
+                        </td>
+                        <td>
+                            akjs
+                        </td>
+                        <td>
+                            akjs
+                        </td>
+                        <td>
+                            akjs
+                        </td>
+                        <td>
+                            <button class="btn btn-default" type="button" onclick="goLoanAddView()">New Loan</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-<script>
-
-    function goLoanAddView() {
-        window.open("loanAdd")
-    }
-
-</script>
 
 
 <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -329,5 +256,59 @@
 <script src="assets/js/price-range.js"></script>
 
 <script src="assets/js/main.js"></script>
+
+<script>
+
+    function goLoanAddView() {
+        window.open("loanAdd")
+    }
+
+    $("#provinceList").on("change",function () {
+        var id = $("#provinceList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedBranch",
+            data :{provinceId:id},
+            success: function (values) {
+                $('#branchList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#branchList')
+                        .append($("<option></option>")
+                            .attr("value",t.branchId)
+                            .text(t.name));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+
+
+
+            }
+        });
+    });
+
+    $("#branchList").on("change",function () {
+        var id = $("#branchList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedSociety",
+            data :{branchId:id},
+            success: function (values) {
+                $('#societyList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#societyList')
+                        .append($("<option></option>")
+                            .attr("value",t.societyId)
+                            .text(t.societyName));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    });
+
+
+</script>
 </body>
 </html>
