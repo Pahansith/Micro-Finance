@@ -48,18 +48,6 @@
     <div id="status">&nbsp;</div>
 </div>
 <!-- Body content -->
-<button type="button" onclick="test()">Test</button>
-<script>
-    function test() {
-        $.ajax({
-            type: "POST",
-            url: "test-add",
-            success: function (message) {
-                alert("Success");
-            }
-        });
-    }
-</script>
 <div class="header-connect">
     <div class="container">
         <div class="row">

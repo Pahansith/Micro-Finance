@@ -1,11 +1,7 @@
 package edu.ijse.gdse39.microfinance.service.mapper;
 
-import edu.ijse.gdse39.microfinance.dto.BranchDto;
-import edu.ijse.gdse39.microfinance.dto.ProvinceDto;
-import edu.ijse.gdse39.microfinance.dto.SocietyDto;
-import edu.ijse.gdse39.microfinance.model.BranchModel;
-import edu.ijse.gdse39.microfinance.model.ProvinceModel;
-import edu.ijse.gdse39.microfinance.model.SocietyModel;
+import edu.ijse.gdse39.microfinance.dto.*;
+import edu.ijse.gdse39.microfinance.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +39,40 @@ public class ModelToDtoMapper {
                 modelList) {
             SocietyDto societyDto = new SocietyDto(society.getSocietyId(),society.getSocietyName());
             dtoList.add(societyDto);
+        }
+        return dtoList;
+    }
+
+    public ArrayList<MemberDto> mapMemberModelList(List<MemberModel> modelList){
+        ArrayList<MemberDto> dtoList = new ArrayList<>();
+        for (MemberModel member:
+                modelList) {
+            MemberDto memberDto = new MemberDto(member.getMemberId(),member.getfName()+" "+member.getlName(),member.getNic(),member.getHometown(),member.getGroupModel().getGroupName());
+            dtoList.add(memberDto);
+        }
+        return dtoList;
+    }
+
+    public ArrayList<LoanDto> mapLoanModelList(List<LoanModel> modelList){
+        ArrayList<LoanDto> dtoList = new ArrayList<>();
+        for (LoanModel loan:
+                modelList) {
+            LoanDto loanDto = new LoanDto(loan.getLoanId(),loan.getLoanNumber(),loan.getLoanProductModel().getProductName(),loan.getApprovedLoanAmount(),loan.getIntRate(),loan.getLoanStatus());
+            dtoList.add(loanDto);
+        }
+        return dtoList;
+    }
+
+    public MemberDto mapMemberModel(MemberModel selectedMember) {
+        return new MemberDto(selectedMember.getMemberId(),selectedMember.getfName()+" "+selectedMember.getlName(),selectedMember.getNic(),selectedMember.getHometown(),selectedMember.getGroupModel().getGroupName());
+    }
+
+    public ArrayList<LoanProductDto> mapLoanProductList(List<LoanProductModel> modelList) {
+        ArrayList<LoanProductDto> dtoList = new ArrayList<>();
+        for (LoanProductModel product:
+                modelList) {
+            LoanProductDto loanProductDto = new LoanProductDto(product.getId(),product.getProductName(),product.getDefPeriod(),product.getDefIntRate(),product.getMinAmount(),product.getMaxAmount());
+            dtoList.add(loanProductDto);
         }
         return dtoList;
     }

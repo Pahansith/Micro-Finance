@@ -12,7 +12,7 @@ import java.util.List;
 public class MemberModel {
 
     public enum SALUTATION{
-        MR,Ms,Mrs,Ven,Dr
+        Mr,Ms,Mrs,Ven,Dr
     }
 
     public enum EMPLOYEE_STATUS{
@@ -41,8 +41,6 @@ public class MemberModel {
     private EMPLOYEE_STATUS employeeStatus;
     @Enumerated(EnumType.STRING)
     private FINANCIAL_STATUS financialStatus;
-
-
 
     @ManyToOne
     private GroupModel groupModel;

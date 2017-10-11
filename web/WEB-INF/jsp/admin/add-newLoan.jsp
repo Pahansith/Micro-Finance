@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -199,73 +200,33 @@
                                     <h4 class="info-text"> Previous Loan Records</h4>
                                     <table class="table table-responsive">
                                         <thead>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
+                                        <th>Loan Number</th>
+                                        <th>Loan Product</th>
+                                        <th>Loan Amount</th>
+                                        <th>Interest rate</th>
+                                        <th>Status</th>
 
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${customerLoanList}" var="list">
                                         <tr>
                                             <td>
-                                                akjs
+                                                ${list.loanNumber}
                                             </td>
                                             <td>
-                                                akjs
+                                                ${list.productName}
                                             </td>
                                             <td>
-                                                akjs
+                                                ${list.amount}
                                             </td>
                                             <td>
-                                                akjs
+                                                ${list.interestRate}
                                             </td>
-
+                                            <td>
+                                                ${list.status}
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-
-                                        </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -277,25 +238,25 @@
                                     <h4 class="info-text"> Member Details</h4>
                                     <table class="table table-responsive">
                                         <thead>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
+                                            <th>Name</th>
+                                            <th>NIC</th>
+                                            <th>Home Town</th>
+                                            <th>Group</th>
 
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td>
-                                                akjs
+                                                ${selectedMember.fulName}
                                             </td>
                                             <td>
-                                                akjs
+                                                ${selectedMember.nic}
                                             </td>
                                             <td>
-                                                akjs
+                                                ${selectedMember.hometown}
                                             </td>
                                             <td>
-                                                akjs
+                                                ${selectedMember.group}
                                             </td>
 
                                         </tr>
@@ -311,36 +272,23 @@
 
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-                                            <td>
-                                                akjs
-                                            </td>
-
-                                        </tr>
+                                        <c:forEach items="${memberGroupDetails}" var="groupList">
+                                            <tr>
+                                                <td>
+                                                    ${groupList.fulName}
+                                                </td>
+                                                <td>
+                                                    ${groupList.nic}
+                                                </td>
+                                                <td>
+                                                    ${groupList.hometown}
+                                                </td>
+                                                <td>
+                                                    ${groupList.group}
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -355,9 +303,9 @@
                                             <label for="l-history">Loan History :</label>
                                             <select id="l-history" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
+                                                <option>Good </option>
+                                                <option>Cannot Trust</option>
+                                                <option>Medium</option>
 
                                             </select>
                                         </div>
@@ -365,9 +313,9 @@
                                             <label for="c-properties">Customer Properties :</label>
                                             <select id="c-properties" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
+                                                <option>Good </option>
+                                                <option>Medium</option>
+                                                <option>Not enough for morgage</option>
 
                                             </select>
                                         </div>
@@ -375,10 +323,10 @@
                                             <label for="c-business">Customer Business :</label>
                                             <select id="c-business" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
-
+                                                <option>Mid Sized </option>
+                                                <option>Large Sized</option>
+                                                <option>No Business</option>
+                                                <option>Small Business</option>
                                             </select>
                                         </div>
                                     </div>
@@ -394,10 +342,9 @@
                                         <div class="form-group">
                                             <label for="l-prod">Loan Product :</label>
                                             <select id="l-prod" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Rent </option>
-                                                <option>Boy</option>
-                                                <option>used</option>
+                                                <c:forEach items="${loanProductList}" var="loanProducts">
+                                                    <option value="${loanProducts.id}">${loanProducts.productName}</option>
+                                                </c:forEach>
 
                                             </select>
                                         </div>
@@ -423,7 +370,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-primary' name='next' value='Next'/>
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' onclick="submitRecords()"/>
+                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' onclick="submitNewLoan()"/>
                             </div>
 
                             <div class="pull-left">
@@ -441,18 +388,52 @@
 </div>
 
 <script>
-    function submitRecords() {
-        bootbox.alert({
-            message : "Added Succesfull",
-            backdrop : true,
-            selected : false
-        }).find('.modal-content').css({
-            'margin-top': 225
+    function submitNewLoan() {
+        var loanHistory = $("#l-history").val();
+        var customerProperties = $("#c-properties").val();
+        var customerBusiness = $("#c-business").val();
+        var loanProductId = $("#l-prod").val();
+        var loanAmount = $("#l-amt").text();
+        var loanTerm = $("#l-term").text();
+        var loanRate = $("#l-rate").text();
+
+        $.ajax({
+            type: "POST",
+            url: 'submitNewLoan',
+            contentType : 'application/json',
+            data : JSON.stringify({
+                "loanHistory":loanHistory,
+                "customerProperties":customerProperties,
+                "customerBusiness":customerBusiness,
+                "loanProductId":1,
+                "loanAmount":1200,
+                "loanTerm":loanTerm,
+                "loanRate":12.00
+            }),
+            success: function (values) {
+                //remove record from ui
+                bootbox.alert({
+                    message : values,
+                    backdrop : true,
+                    selected : false,
+                    callback : function () {
+                        window.open("newLoan","_self");
+                    }
+                }).find('.modal-content').css({
+                    'margin-top': 225
+                });
+            },
+            error : function () {
+                bootbox.alert({
+                    message : "Adding Failed",
+                    backdrop : true,
+                    selected : false
+                }).find('.modal-content').css({
+                    'margin-top': 225
+                });
+            }
         });
 
-        bootbox.dialog({show: false})
-            .off("shown.bs.modal")
-            .modal("show");
     }
 </script>
 

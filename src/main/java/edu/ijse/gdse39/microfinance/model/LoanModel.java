@@ -21,6 +21,7 @@ public class LoanModel {
     int periodInMonths;
     double intRate;
     String intRateStr;
+    String loanStatus;
     @OneToOne
     SystemUser approvedUser;
     @ManyToOne
@@ -29,7 +30,7 @@ public class LoanModel {
     public LoanModel() {
     }
 
-    public LoanModel(int loanNumber, MemberModel memberModel, Integer guarentor1, Integer guarentor2, double approvedLoanAmount, int periodInMonths, double intRate, String intRateStr, SystemUser approvedUser, LoanProductModel loanProductModel) {
+    public LoanModel(int loanNumber, MemberModel memberModel, Integer guarentor1, Integer guarentor2, double approvedLoanAmount, int periodInMonths, double intRate, String intRateStr, SystemUser approvedUser, LoanProductModel loanProductModel, String loanStatus) {
         this.loanNumber = loanNumber;
         this.memberModel = memberModel;
         this.guarentor1 = guarentor1;
@@ -40,6 +41,7 @@ public class LoanModel {
         this.intRateStr = intRateStr;
         this.approvedUser = approvedUser;
         this.loanProductModel = loanProductModel;
+        this.loanStatus = loanStatus;
     }
 
 
@@ -130,6 +132,14 @@ public class LoanModel {
 
     public void setLoanProductModel(LoanProductModel loanProductModel) {
         this.loanProductModel = loanProductModel;
+    }
+
+    public String getLoanStatus() {
+        return loanStatus;
+    }
+
+    public void setLoanStatus(String loanStatus) {
+        this.loanStatus = loanStatus;
     }
 
 }

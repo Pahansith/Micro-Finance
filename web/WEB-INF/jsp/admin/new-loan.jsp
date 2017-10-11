@@ -175,13 +175,12 @@
             society</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-            <form action="" class=" form-inline" style="margin-left: 10px;">
+            <form action="" id="submitForm" method="post" class=" form-inline" style="margin-left: 10px;">
                 <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
 
                 <div class="form-group">
                     <select id="provinceList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Province">
-
                         <c:forEach items="${provinceList}" var="list">
                             <option value="${list.provinceId}">${list.provinceName}</option>
                         </c:forEach>
@@ -197,7 +196,7 @@
                             data-live-search-style="begins" title="Select Society">
                     </select>
                 </div>
-                <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+                <button id="searchLoanList" class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -206,13 +205,13 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
         <div class="form-group">
-            <table class="table table-responsive">
+            <table class="table table-responsive" id="loanListTable">
                 <thead>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>JHS</th>
+                    <th>NIC</th>
+                    <th>Home Town</th>
+                    <th>Group</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -259,8 +258,11 @@
 
 <script>
 
-    function goLoanAddView() {
-        window.open("loanAdd")
+    function goLoanAddView(customerId) {
+        var url = "loanAddView?mem-id="+customerId+"";
+        var $frm = $("#submitForm");
+        $frm.attr('action',url);
+        $frm.submit();
     }
 
     $("#provinceList").on("change",function () {
@@ -308,6 +310,36 @@
         });
     });
 
+    $("#searchLoanList").on("click",function () {
+
+        var societyId = $("#societyList").val();
+
+        $.ajax({
+            type: "POST",
+            url: "getLoanMemberList",
+            data :{societyId:societyId},
+            success: function (values) {
+                $('#loanListTable > tbody').html("");
+                var jsonArr = JSON.parse(values);
+                var rowList = "";
+                jsonArr.forEach(function (t) {
+                    rowList+='<tr>' +
+                        '<td>'+t.memberId+'</td>' +
+                        '<td>'+t.fulName+'</td>' +
+                        '<td>'+t.nic+'</td>' +
+                        '<td>'+t.hometown+'</td>' +
+                        '<td>'+t.group+'</td>' +
+                        '<td><button class="btn btn-default" type="button" onclick="goLoanAddView('+t.memberId+')">New Loan</button></td>'+
+                        '</tr>';
+                });
+
+                $('#loanListTable > tbody').append(rowList);
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+
+    });
 
 </script>
 </body>
