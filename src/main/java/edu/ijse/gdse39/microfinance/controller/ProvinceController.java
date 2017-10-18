@@ -16,15 +16,5 @@ import java.util.List;
 
 @Controller
 public class ProvinceController {
-    @Autowired
-    ProvinceService provinceService;
 
-    @RequestMapping(value = "/newLoan")
-    public ModelAndView getLoanView(){
-        List<ProvinceDto> provinceList = provinceService.getAllProvice();
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin/new-loan");
-        mv.addObject("provinceList",provinceList);
-        return mv;
-    }
 }

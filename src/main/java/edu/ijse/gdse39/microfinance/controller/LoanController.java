@@ -6,10 +6,13 @@ import edu.ijse.gdse39.microfinance.service.LoanService;
 import edu.ijse.gdse39.microfinance.service.MemberService;
 import edu.ijse.gdse39.microfinance.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,25 +32,33 @@ public class LoanController {
     @Autowired
     MemberService memberService;
 
-    @RequestMapping(value = "/loanAddView")
-    public ModelAndView getLoanAddView(@RequestParam(name = "mem-id")String memberId){
+    @Autowired
+    ProvinceService provinceService;
+
+    @RequestMapping(value = "/newLoan")
+    public ModelAndView getLoanView(){
+        List<ProvinceDto> provinceList = provinceService.getAllProvice();
         ModelAndView mv = new ModelAndView();
-        /*int memId = 0;
-        try {
-            memId = Integer.parseInt(memberId);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+        mv.setViewName("admin/new-loan");
+        mv.addObject("provinceList",provinceList);
+        return mv;
+    }
+
+    @RequestMapping(value = "/loanAddView")
+    public ModelAndView getLoanAddView(@RequestParam(name = "mem-id")String memberId, HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        int memId = Integer.parseInt(memberId);
         ArrayList<LoanDto> customerPreviousLoanList = loanService.getCustomerPreviousLoanList(memId);
         MemberDto selectedMember = memberService.getSelectedMember(memId);
 
         ArrayList<MemberDto> memberGroupDetails = groupService.getMemberGroupDetails(memId);
         ArrayList<LoanProductDto> loanProductList = loanService.getLoanProductList();
 
-        mv.addObject("memberGroupDetails",memberGroupDetails);
-        mv.addObject("loanProductList",loanProductList);
-        mv.addObject("selectedMember",selectedMember);
-        mv.addObject("customerLoanList",customerPreviousLoanList)*/;
+        HttpSession session = request.getSession();
+        session.setAttribute("memberGroupDetails",memberGroupDetails);
+        session.setAttribute("loanProductList",loanProductList);
+        session.setAttribute("selectedMember",selectedMember);
+        session.setAttribute("customerLoanList",customerPreviousLoanList);
 
         mv.setViewName("admin/add-newLoan");
         return mv;
@@ -72,13 +83,44 @@ public class LoanController {
     public ModelAndView getBranchSearchView(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("admin/search-branchRecom");
+        List<ProvinceDto> provinceList = provinceService.getAllProvice();
+        mv.addObject("provinceList",provinceList);
         return mv;
     }
 
     @RequestMapping(value = "/submitNewLoan" , method = RequestMethod.POST, consumes = {"application/json"})
-    public @ResponseBody String submitLoanRecords(@RequestBody LoanAddInfoDto loanInfo){
-        System.out.println(loanInfo.getLoanAmount());
-        return "success";
+    public @ResponseBody String submitLoanRecords(@RequestBody LoanAddInfoDto loanInfo, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
+        MemberDto selectedMember = (MemberDto) session.getAttribute("selectedMember");
+        ArrayList<MemberDto> memberGroupDetails = (ArrayList<MemberDto>) session.getAttribute("memberGroupDetails");
+        ArrayList<LoanProductDto> loanProductList = (ArrayList<LoanProductDto>) session.getAttribute("loanProductList");
+        loanInfo.setLoggedInUserId(loggedInUserId);
+        boolean isSaved = loanService.saveNewLoan(loanInfo, memberGroupDetails, selectedMember, loanProductList);
+        if (isSaved){
+            return "success";
+        }
+        return "Error Occurred";
+    }
+
+    @RequestMapping(value = "/loanApproveView")
+    public ModelAndView getLoanApproveView(@RequestParam(name = "mem-id")String memberId, HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        int memId = Integer.parseInt(memberId);
+        ArrayList<LoanDto> customerPreviousLoanList = loanService.getCustomerPreviousLoanList(memId);
+        MemberDto selectedMember = memberService.getSelectedMember(memId);
+
+        ArrayList<MemberDto> memberGroupDetails = groupService.getMemberGroupDetails(memId);
+        ArrayList<LoanProductDto> loanProductList = loanService.getLoanProductList();
+
+        HttpSession session = request.getSession();
+        session.setAttribute("memberGroupDetails",memberGroupDetails);
+        session.setAttribute("loanProductList",loanProductList);
+        session.setAttribute("selectedMember",selectedMember);
+        session.setAttribute("customerLoanList",customerPreviousLoanList);
+
+        mv.setViewName("admin/add-newLoan");
+        return mv;
     }
 
 

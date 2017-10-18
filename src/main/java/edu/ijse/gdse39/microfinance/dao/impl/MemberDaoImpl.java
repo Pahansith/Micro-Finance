@@ -1,6 +1,7 @@
 package edu.ijse.gdse39.microfinance.dao.impl;
 
 import edu.ijse.gdse39.microfinance.dao.MemberDao;
+import edu.ijse.gdse39.microfinance.dto.MemberDto;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
 import edu.ijse.gdse39.microfinance.model.ProvinceModel;
 import org.hibernate.Query;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,5 +73,24 @@ public class MemberDaoImpl implements MemberDao{
         }
 
 
+    }
+
+    @Override
+    public List<MemberModel> getPendingApproveLoanList(int societyId) {
+        List<MemberModel> memberList = null;
+        Session session = sessionFactory.openSession();
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("select m from LoanModel l inner join l.memberModel m inner join m.groupModel g inner join g.societyModel s where s.societyId =:id and l.loanStatus = 'SAVED'");
+            query.setParameter("id",societyId);
+            memberList = query.list();
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }finally {
+            session.flush();
+            session.close();
+        }
+        return memberList;
     }
 }

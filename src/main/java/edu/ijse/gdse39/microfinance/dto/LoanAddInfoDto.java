@@ -11,20 +11,26 @@ public class LoanAddInfoDto {
     private String customerBusiness;
     private int loanProductId;
     private double loanAmount;
-    private String loanTerm;
-    private double loanRate;
+    private int loggedInUserId;
+
 
     public LoanAddInfoDto() {
     }
 
-    public LoanAddInfoDto(String loanHistory, String customerProperties, String customerBusiness, int loanProductId, double loanAmount, String loanTerm, double loanRate) {
+    public LoanAddInfoDto(String loanHistory, String customerProperties, String customerBusiness, int loanProductId, double loanAmount) {
         this.loanHistory = loanHistory;
         this.customerProperties = customerProperties;
         this.customerBusiness = customerBusiness;
         this.loanProductId = loanProductId;
         this.loanAmount = loanAmount;
-        this.loanTerm = loanTerm;
-        this.loanRate = loanRate;
+    }
+
+    public int getLoggedInUserId() {
+        return loggedInUserId;
+    }
+
+    public void setLoggedInUserId(int loggedInUserId) {
+        this.loggedInUserId = loggedInUserId;
     }
 
     public String getLoanHistory() {
@@ -67,19 +73,4 @@ public class LoanAddInfoDto {
         this.loanAmount = loanAmount;
     }
 
-    public String getLoanTerm() {
-        return loanTerm;
-    }
-
-    public void setLoanTerm(String loanTerm) {
-        this.loanTerm = loanTerm;
-    }
-
-    public double getLoanRate() {
-        return loanRate;
-    }
-
-    public void setLoanRate(double loanRate) {
-        this.loanRate = loanRate;
-    }
 }

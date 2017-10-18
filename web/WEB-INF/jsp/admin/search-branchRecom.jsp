@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -174,46 +175,28 @@
             society</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-            <form action="" class=" form-inline" style="margin-left: 10px;">
+            <form id="submitForm" action="" class=" form-inline" style="margin-left: 10px;">
                 <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
 
                 <div class="form-group">
-                    <select id="lunchBegins1" class="selectpicker" data-live-search="true"
+                    <select id="provinceList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Province">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
+                        <c:forEach items="${provinceList}" var="list">
+                            <option value="${list.provinceId}">${list.provinceName}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select id="lunchBegins2" class="selectpicker" data-live-search="true"
+                    <select id="branchList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Branch">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select id="lunchBegins3" class="selectpicker" data-live-search="true"
+                    <select id="societyList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Society">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
                 </div>
-                <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+                <button id="searchLoanList" class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -222,7 +205,7 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
         <div class="form-group">
-            <table class="table table-responsive">
+            <table id="loanListTable" class="table table-responsive">
                 <thead>
                 <th>Name</th>
                 <th>Name</th>
@@ -231,87 +214,12 @@
                 <th>JHS</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="button" onclick="goToBranchRecomView()">Recommend</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">Recommend</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">Recommend</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        <button class="btn btn-default" type="submit">Recommend</button>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-<script>
-
-    function goToBranchRecomView() {
-        window.open("branch-recommendation")
-    }
-
-</script>
 
 
 <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -331,5 +239,91 @@
 <script src="assets/js/price-range.js"></script>
 
 <script src="assets/js/main.js"></script>
+
+<script>
+
+    function goLoanApprove(customerId) {
+        var url = "loanApproveView?mem-id="+customerId+"";
+        var $frm = $("#submitForm");
+        $frm.attr('action',url);
+        $frm.submit();
+    }
+
+
+    $("#provinceList").on("change",function () {
+        var id = $("#provinceList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedBranch",
+            data :{provinceId:id},
+            success: function (values) {
+                $('#branchList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#branchList')
+                        .append($("<option></option>")
+                            .attr("value",t.branchId)
+                            .text(t.name));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    });
+
+    $("#branchList").on("change",function () {
+        var id = $("#branchList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedSociety",
+            data :{branchId:id},
+            success: function (values) {
+                $('#societyList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#societyList')
+                        .append($("<option></option>")
+                            .attr("value",t.societyId)
+                            .text(t.societyName));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    });
+
+    $("#searchLoanList").on("click",function () {
+
+        var societyId = $("#societyList").val();
+
+        $.ajax({
+            type: "POST",
+            url: "getLoanMemberListForBranchRecom",
+            data :{societyId:societyId},
+            success: function (values) {
+                $('#loanListTable > tbody').html("");
+                var jsonArr = JSON.parse(values);
+                var rowList = "";
+                jsonArr.forEach(function (t) {
+                    rowList+='<tr>' +
+                        '<td>'+t.memberId+'</td>' +
+                        '<td>'+t.fulName+'</td>' +
+                        '<td>'+t.nic+'</td>' +
+                        '<td>'+t.hometown+'</td>' +
+                        '<td>'+t.group+'</td>' +
+                        '<td><button class="btn btn-default" type="button" onclick="goLoanApprove('+t.memberId+')">Approve Loan</button></td>'+
+                        '</tr>';
+                });
+
+                $('#loanListTable > tbody').append(rowList);
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+
+    });
+
+</script>
+
 </body>
 </html>

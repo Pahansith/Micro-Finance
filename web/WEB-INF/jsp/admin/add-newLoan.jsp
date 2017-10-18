@@ -238,6 +238,7 @@
                                     <h4 class="info-text"> Member Details</h4>
                                     <table class="table table-responsive">
                                         <thead>
+                                            <th>Member Id</th>
                                             <th>Name</th>
                                             <th>NIC</th>
                                             <th>Home Town</th>
@@ -246,6 +247,10 @@
                                         </thead>
                                         <tbody>
                                         <tr>
+                                            <c:set var="selectedIdOfMem" scope="session" value="${selectedMember.memberId}"/>
+                                            <td>
+                                                ${selectedMember.memberId}
+                                            </td>
                                             <td>
                                                 ${selectedMember.fulName}
                                             </td>
@@ -265,29 +270,35 @@
                                     <h4 class="info-text"> Guarentor Details</h4>
                                     <table class="table table-responsive">
                                         <thead>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-                                        <th>Name</th>
-
+                                            <th>Member Id</th>
+                                            <th>Name</th>
+                                            <th>NIC</th>
+                                            <th>Home Town</th>
+                                            <th>Group</th>
                                         </thead>
                                         <tbody>
 
                                         <c:forEach items="${memberGroupDetails}" var="groupList">
-                                            <tr>
-                                                <td>
-                                                    ${groupList.fulName}
-                                                </td>
-                                                <td>
-                                                    ${groupList.nic}
-                                                </td>
-                                                <td>
-                                                    ${groupList.hometown}
-                                                </td>
-                                                <td>
-                                                    ${groupList.group}
-                                                </td>
-                                            </tr>
+                                            <c:if test="${selectedIdOfMem != groupList.memberId}">
+                                                <tr>
+                                                    <td>
+                                                            ${groupList.memberId}
+                                                    </td>
+                                                    <td>
+                                                            ${groupList.fulName}
+                                                    </td>
+                                                    <td>
+                                                            ${groupList.nic}
+                                                    </td>
+                                                    <td>
+                                                            ${groupList.hometown}
+                                                    </td>
+                                                    <td>
+                                                            ${groupList.group}
+                                                    </td>
+                                                </tr>
+                                            </c:if>
+
                                         </c:forEach>
                                         </tbody>
                                     </table>
@@ -341,11 +352,10 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="l-prod">Loan Product :</label>
-                                            <select id="l-prod" class="selectpicker show-tick form-control">
+                                            <select id="l-prod" class="selectpicker show-tick form-control" onchange="setLoanProductValues($(this).val())">
                                                 <c:forEach items="${loanProductList}" var="loanProducts">
                                                     <option value="${loanProducts.id}">${loanProducts.productName}</option>
                                                 </c:forEach>
-
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -354,11 +364,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="l-term">Loan Term :</label><br>
-                                            <span id="l-term" style="margin-left: 15px;">48W</span>
+                                            <span id="l-term" style="margin-left: 15px;"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="l-rate">Interest Rate :</label><br>
-                                            <span id="l-rate" style="margin-left: 15px;">12.00%</span>
+                                            <span id="l-rate" style="margin-left: 15px;"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -387,13 +397,60 @@
     </div>
 </div>
 
+
+
+<script src="assets/js/modernizr-2.6.2.min.js"></script>
+<script src="assets/js//jquery-1.10.2.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap-select.min.js"></script>
+<script src="assets/js/bootstrap-hover-dropdown.js"></script>
+<script src="assets/js/easypiechart.min.js"></script>
+<script src="assets/js/jquery.easypiechart.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/wow.js"></script>
+<script src="assets/js/icheck.min.js"></script>
+
+<script src="assets/js/price-range.js"></script>
+<script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/wizard.js"></script>
+<script src="assets/js/bootbox.js"></script>
+<script src="assets/js/main.js"></script>
+
 <script>
+
+    var selectedLoanProduct = 1;
+    var loanProduct = null;
+    $(document).ready(function () {
+
+        loanProduct = {
+            <c:forEach items="${loanProductList}" var="product" varStatus="loop">
+            '${product.id}':{
+                productId : '${product.id}',
+                productName : '${product.productName}',
+                defPeriod :'${product.defPeriod}',
+                defIntRate :'${product.defIntRate}',
+                minAmount : '${product.minAmount}',
+                maxAmount : '${product.maxAmount}'
+            },
+            </c:forEach>
+        };
+        $("#l-term").text(loanProduct[selectedLoanProduct].defPeriod);
+        $("#l-rate").text(loanProduct[selectedLoanProduct].defIntRate+"%");
+    });
+
+    function setLoanProductValues(productId) {
+        selectedLoanProduct = loanProduct[productId];
+        $("#l-term").text(selectedLoanProduct.defPeriod);
+        $("#l-rate").text(selectedLoanProduct.defIntRate+"%");
+    }
+
     function submitNewLoan() {
         var loanHistory = $("#l-history").val();
         var customerProperties = $("#c-properties").val();
         var customerBusiness = $("#c-business").val();
         var loanProductId = $("#l-prod").val();
-        var loanAmount = $("#l-amt").text();
+        var loanAmount = $("#l-amt").val();
         var loanTerm = $("#l-term").text();
         var loanRate = $("#l-rate").text();
 
@@ -405,10 +462,9 @@
                 "loanHistory":loanHistory,
                 "customerProperties":customerProperties,
                 "customerBusiness":customerBusiness,
-                "loanProductId":1,
-                "loanAmount":1200,
-                "loanTerm":loanTerm,
-                "loanRate":12.00
+                "loanProductId":loanProductId,
+                "loanAmount":loanAmount,
+                "loggedInUserId":1
             }),
             success: function (values) {
                 //remove record from ui
@@ -435,25 +491,11 @@
         });
 
     }
+
+
+
+
 </script>
-
-<script src="assets/js/modernizr-2.6.2.min.js"></script>
-<script src="assets/js//jquery-1.10.2.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/bootstrap-select.min.js"></script>
-<script src="assets/js/bootstrap-hover-dropdown.js"></script>
-<script src="assets/js/easypiechart.min.js"></script>
-<script src="assets/js/jquery.easypiechart.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/wow.js"></script>
-<script src="assets/js/icheck.min.js"></script>
-
-<script src="assets/js/price-range.js"></script>
-<script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-<script src="assets/js/jquery.validate.min.js"></script>
-<script src="assets/js/wizard.js"></script>
-<script src="assets/js/bootbox.js"></script>
-<script src="assets/js/main.js"></script>
 
 
 </body>

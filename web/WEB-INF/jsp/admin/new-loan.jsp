@@ -214,23 +214,6 @@
                     <th>Group</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            akjs
-                        </td>
-                        <td>
-                            akjs
-                        </td>
-                        <td>
-                            akjs
-                        </td>
-                        <td>
-                            akjs
-                        </td>
-                        <td>
-                            <button class="btn btn-default" type="button" onclick="goLoanAddView()">New Loan</button>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

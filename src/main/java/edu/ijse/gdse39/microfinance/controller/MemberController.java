@@ -6,10 +6,12 @@ import edu.ijse.gdse39.microfinance.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -39,6 +41,13 @@ public class MemberController {
     @RequestMapping(value = "/getLoanMemberList")
     public @ResponseBody String getMembersForNewLoan(@RequestParam(name = "societyId") String societyId){
         ArrayList<MemberDto> memberListForLoan = memberService.getMemberListForLoan(Integer.parseInt(societyId));
+        Gson gson = new Gson();
+        return gson.toJson(memberListForLoan);
+    }
+
+    @RequestMapping(value = "/getLoanMemberListForBranchRecom",method = RequestMethod.POST)
+    public @ResponseBody String getLoanMemberListForBranchRecom(@RequestParam(name = "societyId")String societyId){
+        ArrayList<MemberDto> memberListForLoan = memberService.getPendingApproveLoanList(Integer.parseInt(societyId));
         Gson gson = new Gson();
         return gson.toJson(memberListForLoan);
     }

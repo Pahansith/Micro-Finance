@@ -39,4 +39,10 @@ public class MemberServiceImpl implements MemberService{
         MemberModel selectedMember = memberDao.getSelectedMember(memId);
         return new ModelToDtoMapper().mapMemberModel(selectedMember);
     }
+
+    @Override
+    public ArrayList<MemberDto> getPendingApproveLoanList(int societyId) {
+        List<MemberModel> pendingApproveLoanList = memberDao.getPendingApproveLoanList(societyId);
+        return new ModelToDtoMapper().mapMemberModelList(pendingApproveLoanList);
+    }
 }

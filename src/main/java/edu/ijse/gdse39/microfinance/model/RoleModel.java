@@ -53,4 +53,7 @@ public class RoleModel {
         this.role_type = role_type;
         this.privilage = privilage;
     }
+
+    public RoleModel() {
+    }
 }

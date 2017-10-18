@@ -3,6 +3,7 @@ package edu.ijse.gdse39.microfinance.dao;
 import edu.ijse.gdse39.microfinance.model.LoanModel;
 import edu.ijse.gdse39.microfinance.model.LoanProductModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface LoanDao {
     List<LoanModel> getCustomerPreviousLoanList(int customerId);
 
     List<LoanProductModel> getLoanProductList();
+
+    Serializable saveNewLoan(LoanModel loanModel);
 }

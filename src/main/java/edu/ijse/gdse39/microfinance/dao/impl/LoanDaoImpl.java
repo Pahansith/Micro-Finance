@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class LoanDaoImpl implements LoanDao{
 
     @Autowired
     SessionFactory sessionFactory;
+
     @Override
     public List<LoanModel> getCustomerPreviousLoanList(int customerId) {
         List<LoanModel> memberLoanList = null;
@@ -64,5 +66,23 @@ public class LoanDaoImpl implements LoanDao{
             session.close();
         }
 
+    }
+
+    @Override
+    public Serializable saveNewLoan(LoanModel loanModel) {
+        Session session = sessionFactory.openSession();
+        Transaction txn = null;
+        try {
+            txn = session.beginTransaction();
+            Serializable save = session.save(loanModel);
+            txn.commit();
+            return save;
+        }catch (Exception e){
+            e.printStackTrace();
+            txn.rollback();
+            return null;
+        }finally {
+            session.close();
+        }
     }
 }

@@ -11,10 +11,22 @@ import javax.persistence.*;
 public class SystemUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private
     Integer id;
-    String name;
+    private String name;
+    @Column(name = "password")
+    private String password;
     @OneToOne
-    RoleModel role;
+    private RoleModel role;
+
+    public SystemUser() {
+    }
+
+    public SystemUser(String name, String password, RoleModel role) {
+        this.name = name;
+        this.password = password;
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;
@@ -40,8 +52,11 @@ public class SystemUser {
         this.role = role;
     }
 
-    public SystemUser(String name, RoleModel role) {
-        this.name = name;
-        this.role = role;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

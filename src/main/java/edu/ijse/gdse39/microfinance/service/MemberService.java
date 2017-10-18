@@ -12,4 +12,6 @@ import java.util.ArrayList;
 public interface MemberService {
     ArrayList<MemberDto> getMemberListForLoan(int soceityId);
     MemberDto getSelectedMember(int memId);
+
+    ArrayList<MemberDto> getPendingApproveLoanList(int societyId);
 }
