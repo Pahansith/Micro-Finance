@@ -12,4 +12,6 @@ import java.io.Serializable;
 public interface CustomerFeedbackDao {
 
     Serializable saveFeedback(CustomerFeedbackDataModel customerFeedbackDataModel);
+
+    CustomerFeedbackDataModel getFeedbackDataOfCustomer(int memId);
 }

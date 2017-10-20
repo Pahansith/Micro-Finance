@@ -3,10 +3,8 @@ package edu.ijse.gdse39.microfinance.dao.impl;
 import edu.ijse.gdse39.microfinance.dao.LoanDao;
 import edu.ijse.gdse39.microfinance.model.LoanModel;
 import edu.ijse.gdse39.microfinance.model.LoanProductModel;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -81,6 +79,64 @@ public class LoanDaoImpl implements LoanDao{
             e.printStackTrace();
             txn.rollback();
             return null;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public LoanModel getCustomerLoanDetailsForApproval(Integer memberModel_memberId) {
+        Session session = sessionFactory.openSession();
+        Transaction txn = null;
+        LoanModel loanModel = null;
+        try{
+            txn = session.beginTransaction();
+            Criteria criteria = session.createCriteria(LoanModel.class).add(Restrictions.eq("memberModel.memberId",memberModel_memberId)).add(Restrictions.eq("loanStatus","SAVED"));
+            loanModel = (LoanModel) criteria.uniqueResult();
+            txn.commit();
+            return loanModel;
+        }catch (Exception e){
+            e.printStackTrace();
+            txn.rollback();
+            return loanModel;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean approveLoan(LoanModel loanModel) {
+        Session session = sessionFactory.openSession();
+        Transaction txn = null;
+        try {
+            txn = session.beginTransaction();
+            session.update(loanModel);
+            txn.commit();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            txn.rollback();
+            return false;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public LoanModel getApproveLoanModelOfCustomer(Integer id) {
+        Session session = sessionFactory.openSession();
+        Transaction txn = null;
+        LoanModel loanModel = null;
+        try{
+            txn = session.beginTransaction();
+            Criteria criteria = session.createCriteria(LoanModel.class).add(Restrictions.eq("loanStatus","SAVED")).add(Restrictions.eq("loanId",id));
+            loanModel = (LoanModel) criteria.uniqueResult();
+            txn.commit();
+            return loanModel;
+        }catch (Exception e){
+            e.printStackTrace();
+            txn.rollback();
+            return loanModel;
         }finally {
             session.close();
         }

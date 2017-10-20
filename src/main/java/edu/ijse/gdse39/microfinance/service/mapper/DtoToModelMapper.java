@@ -12,11 +12,9 @@ import edu.ijse.gdse39.microfinance.service.helper.NumberToWordConverter;
  */
 
 public class DtoToModelMapper {
-    private static int loanNumber = 1001;
     public LoanModel mapLoanInfoDtoToLoanModel(LoanAddInfoDto loanAddInfoDto){
         LoanModel loanModel = new LoanModel();
         loanModel.setApprovedLoanAmount(loanAddInfoDto.getLoanAmount());
-        loanModel.setLoanNumber(++loanNumber);
         return loanModel;
     }
 

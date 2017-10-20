@@ -11,11 +11,12 @@ import javax.persistence.*;
 public class PaymentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    private Integer id;
     @ManyToOne
+    private
     LoanModel loanModel;
-    String paymentDate;
-    double paymentAmount;
+    private String paymentDate;
+    private double paymentAmount;
 
     public Integer getId() {
         return id;

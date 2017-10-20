@@ -35,6 +35,7 @@ public class LoanController {
     @Autowired
     ProvinceService provinceService;
 
+
     @RequestMapping(value = "/newLoan")
     public ModelAndView getLoanView(){
         List<ProvinceDto> provinceList = provinceService.getAllProvice();
@@ -43,14 +44,13 @@ public class LoanController {
         mv.addObject("provinceList",provinceList);
         return mv;
     }
-
     @RequestMapping(value = "/loanAddView")
     public ModelAndView getLoanAddView(@RequestParam(name = "mem-id")String memberId, HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
         int memId = Integer.parseInt(memberId);
+
         ArrayList<LoanDto> customerPreviousLoanList = loanService.getCustomerPreviousLoanList(memId);
         MemberDto selectedMember = memberService.getSelectedMember(memId);
-
         ArrayList<MemberDto> memberGroupDetails = groupService.getMemberGroupDetails(memId);
         ArrayList<LoanProductDto> loanProductList = loanService.getLoanProductList();
 
@@ -59,6 +59,7 @@ public class LoanController {
         session.setAttribute("loanProductList",loanProductList);
         session.setAttribute("selectedMember",selectedMember);
         session.setAttribute("customerLoanList",customerPreviousLoanList);
+        session.setAttribute("loggedInUserId",1);
 
         mv.setViewName("admin/add-newLoan");
         return mv;
@@ -69,14 +70,6 @@ public class LoanController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("admin/branch-recom");
         return mv;
-    }
-
-    @RequestMapping(value = "/issue-loan")
-    public ModelAndView issueLoan(){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin/issue-loan");
-        return mv;
-
     }
 
     @RequestMapping(value = "branch-search")
@@ -98,29 +91,47 @@ public class LoanController {
         loanInfo.setLoggedInUserId(loggedInUserId);
         boolean isSaved = loanService.saveNewLoan(loanInfo, memberGroupDetails, selectedMember, loanProductList);
         if (isSaved){
-            return "success";
+            return "Success";
         }
         return "Error Occurred";
     }
 
-    @RequestMapping(value = "/loanApproveView")
+    @RequestMapping(value = "/loanApproveView",method = RequestMethod.POST)
     public ModelAndView getLoanApproveView(@RequestParam(name = "mem-id")String memberId, HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
         int memId = Integer.parseInt(memberId);
-        ArrayList<LoanDto> customerPreviousLoanList = loanService.getCustomerPreviousLoanList(memId);
-        MemberDto selectedMember = memberService.getSelectedMember(memId);
+        HttpSession session = request.getSession();
 
+/*
         ArrayList<MemberDto> memberGroupDetails = groupService.getMemberGroupDetails(memId);
         ArrayList<LoanProductDto> loanProductList = loanService.getLoanProductList();
 
-        HttpSession session = request.getSession();
+
         session.setAttribute("memberGroupDetails",memberGroupDetails);
         session.setAttribute("loanProductList",loanProductList);
-        session.setAttribute("selectedMember",selectedMember);
-        session.setAttribute("customerLoanList",customerPreviousLoanList);
+        session.setAttribute("selectedMember",selectedMember);*/
 
-        mv.setViewName("admin/add-newLoan");
+        CustomerFeedbackDataDto customerFeedback = loanService.getCustomerFeedback(memId);
+        LoanDto customerLoanDetail = loanService.getCustomerLoanDetailsForApproval(Integer.parseInt(memberId));
+        MemberDto selectedMember = memberService.getSelectedMember(memId);
+
+        session.setAttribute("selectedMember",selectedMember);
+        session.setAttribute("customerFeedback",customerFeedback);
+        session.setAttribute("customerLoanDetail",customerLoanDetail);
+        mv.setViewName("admin/branch-recom");
         return mv;
+    }
+
+    @RequestMapping(value = "approveLoan")
+    public @ResponseBody String approveLoan(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        MemberDto selectedMember = (MemberDto) session.getAttribute("selectedMember");
+        LoanDto customerLoanDetail = (LoanDto)session.getAttribute("customerLoanDetail");
+        boolean isSaved = loanService.approveLoan(selectedMember,customerLoanDetail);
+        if (isSaved){
+            return "Success";
+        }
+        return "Error Occurred";
     }
 
 

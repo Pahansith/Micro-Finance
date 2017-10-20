@@ -110,9 +110,6 @@
                         <li>
                             <a href="branch-search">Branch Manager Approval</a>
                         </li>
-                        <li>
-                            <a href="issue-loan">Loan Issue</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown ymm-sw " data-wow-delay="0.1s">

@@ -1,8 +1,21 @@
 package edu.ijse.gdse39.microfinance.controller;
 
+import com.google.gson.Gson;
+import edu.ijse.gdse39.microfinance.dto.LoanScheduleDto;
+import edu.ijse.gdse39.microfinance.dto.MemberDto;
+import edu.ijse.gdse39.microfinance.dto.ProvinceDto;
+import edu.ijse.gdse39.microfinance.service.LoanScheduleService;
+import edu.ijse.gdse39.microfinance.service.ProvinceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Pahansith on 10/5/2017
@@ -11,6 +24,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoanOperationController {
+
+    @Autowired
+    ProvinceService provinceService;
+
+    @Autowired
+    LoanScheduleService loanScheduleService;
 
     @RequestMapping(value = "loan-payment")
     public ModelAndView loanPayment(){
@@ -22,7 +41,17 @@ public class LoanOperationController {
     @RequestMapping(value = "loan-scedule")
     public ModelAndView loanSchedule(){
         ModelAndView mv = new ModelAndView();
+        /*List<ProvinceDto> provinceList = provinceService.getAllProvice();
+        mv.addObject("provinceList",provinceList);*/
         mv.setViewName("admin/loan-schedule");
         return mv;
     }
+
+    @RequestMapping(value = "/getLoanScheduleList")
+    public @ResponseBody String getLoanScheduleList(@RequestParam String loanNumber){
+        ArrayList<LoanScheduleDto> loanScheduleList = loanScheduleService.getLoanScheduleForSpecificLoan(Integer.parseInt(loanNumber));
+        Gson gson = new Gson();
+        return gson.toJson(loanScheduleList);
+    }
+
 }

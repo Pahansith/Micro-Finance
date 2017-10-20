@@ -13,6 +13,7 @@ public class LoanDto {
     String productName;
     double amount;
     double interestRate;
+    String defPeriod;
     String status;
 
     public LoanDto() {
@@ -25,6 +26,24 @@ public class LoanDto {
         this.amount = amount;
         this.interestRate = interestRate;
         this.status = status;
+    }
+
+    public LoanDto(int loanId, int loanNumber, String productName, double amount, double interestRate, String status, String defPeriod) {
+        this.loanId = loanId;
+        this.loanNumber = loanNumber;
+        this.productName = productName;
+        this.amount = amount;
+        this.interestRate = interestRate;
+        this.status = status;
+        this.defPeriod = defPeriod;
+    }
+
+    public String getDefPeriod() {
+        return defPeriod;
+    }
+
+    public void setDefPeriod(String defPeriod) {
+        this.defPeriod = defPeriod;
     }
 
     public int getLoanId() {

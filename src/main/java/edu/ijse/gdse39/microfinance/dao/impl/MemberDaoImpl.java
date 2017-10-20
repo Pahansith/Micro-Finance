@@ -1,7 +1,6 @@
 package edu.ijse.gdse39.microfinance.dao.impl;
 
 import edu.ijse.gdse39.microfinance.dao.MemberDao;
-import edu.ijse.gdse39.microfinance.dto.MemberDto;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
 import edu.ijse.gdse39.microfinance.model.ProvinceModel;
 import org.hibernate.Query;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

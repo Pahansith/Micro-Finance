@@ -38,4 +38,23 @@ public class CustomerFeedbackDaoImpl implements CustomerFeedbackDao {
         }
 
     }
+
+    @Override
+    public CustomerFeedbackDataModel getFeedbackDataOfCustomer(int memId) {
+        Session session = sessionFactory.openSession();
+        CustomerFeedbackDataModel customerFeedbackDataModel = null;
+        Transaction txn = null;
+        try {
+            txn = session.beginTransaction();
+            customerFeedbackDataModel = (CustomerFeedbackDataModel) session.get(CustomerFeedbackDataModel.class, memId);
+            txn.commit();
+            return customerFeedbackDataModel;
+        }catch (Exception e){
+            txn.rollback();
+            e.printStackTrace();
+            return customerFeedbackDataModel;
+        }finally {
+            session.close();
+        }
+    }
 }

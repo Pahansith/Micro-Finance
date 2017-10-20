@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -107,9 +108,6 @@
                         <li>
                             <a href="branch-search">Branch Manager Approval</a>
                         </li>
-                        <li>
-                            <a href="issue-loan">Loan Issue</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -174,48 +172,31 @@
             society an finally enter loan number</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-            <form action="" class=" form-inline" style="margin-left: 10px;">
+            <form action="" class=" form-inline" style="margin-left: 10px;" method="post">
 
-                <div class="form-group">
-                    <select id="lunchBegins1" class="selectpicker" data-live-search="true"
+                <%--<div class="form-group">
+                    <select id="provinceList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Province">
+                        <c:forEach items="${provinceList}" var="list">
+                            <option value="${list.provinceId}">${list.provinceName}</option>
+                        </c:forEach>
 
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select id="lunchBegins2" class="selectpicker" data-live-search="true"
+                    <select id="branchList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Branch">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select id="lunchBegins3" class="selectpicker" data-live-search="true"
+                    <select id="societyList" class="selectpicker" data-live-search="true"
                             data-live-search-style="begins" title="Select Society">
-
-                        <option>New york, CA</option>
-                        <option>Paris</option>
-                        <option>Casablanca</option>
-                        <option>Tokyo</option>
-                        <option>Marraekch</option>
-                        <option>kyoto , shibua</option>
                     </select>
-                </div>
+                </div>--%>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Loan Number">
+                    <input id="loanNumber" type="text" class="form-control" placeholder="Loan Number">
                 </div>
-                <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+                <button id="searchLoanList" class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -224,73 +205,13 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
         <div class="form-group">
-            <table class="table table-responsive">
+            <table id="loanListTable" class="table table-responsive">
                 <thead>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-
+                    <th>Due Date</th>
+                    <th>Payment</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
 
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                    <td>
-                        akjs
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </div>
@@ -332,5 +253,87 @@
 <script src="assets/js/price-range.js"></script>
 <script src="assets/js/bootbox.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+
+    /*function goLoanAddView(customerId) {
+        var url = "loanAddView?mem-id="+customerId+"";
+        var $frm = $("#submitForm");
+        $frm.attr('action',url);
+        $frm.submit();
+    }*/
+
+    /*$("#provinceList").on("change",function () {
+        var id = $("#provinceList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedBranch",
+            data :{provinceId:id},
+            success: function (values) {
+                $('#branchList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#branchList')
+                        .append($("<option></option>")
+                            .attr("value",t.branchId)
+                            .text(t.name));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+
+
+
+            }
+        });
+    });
+
+    $("#branchList").on("change",function () {
+        var id = $("#branchList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedSociety",
+            data :{branchId:id},
+            success: function (values) {
+                $('#societyList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#societyList')
+                        .append($("<option></option>")
+                            .attr("value",t.societyId)
+                            .text(t.societyName));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    });*/
+
+    $("#searchLoanList").on("click",function () {
+        var loanNumber = $("#loanNumber").val();
+
+        $.ajax({
+            type: "POST",
+            url: "getLoanScheduleList",
+            data :{loanNumber:loanNumber},
+            success: function (values) {
+                $('#loanListTable > tbody').html("");
+                var jsonArr = JSON.parse(values);
+                var rowList = "";
+                jsonArr.forEach(function (t) {
+                    rowList+='<tr>' +
+                        '<td>'+t.paidDate+'</td>' +
+                        '<td>'+t.paidTotal+'</td>' +
+                        '</tr>';
+                });
+
+                $('#loanListTable > tbody').append(rowList);
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+
+    });
+
+</script>
 </body>
 </html>

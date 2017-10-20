@@ -11,20 +11,24 @@ import javax.persistence.*;
 public class LoanModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private
     Integer loanId;
-    int loanNumber;
+    private int loanNumber;
     @ManyToOne
+    private
     MemberModel memberModel;
-    Integer guarentor1;
-    Integer guarentor2;
-    double approvedLoanAmount;
-    int periodInMonths;
-    double intRate;
-    String intRateStr;
-    String loanStatus;
+    private Integer guarentor1;
+    private Integer guarentor2;
+    private double approvedLoanAmount;
+    private int periodInMonths;
+    private double intRate;
+    private String intRateStr;
+    private String loanStatus;
     @OneToOne
+    private
     SystemUser approvedUser;
     @ManyToOne
+    private
     LoanProductModel loanProductModel;
 
     public LoanModel() {

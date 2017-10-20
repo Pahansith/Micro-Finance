@@ -1,9 +1,6 @@
 package edu.ijse.gdse39.microfinance.service;
 
-import edu.ijse.gdse39.microfinance.dto.LoanAddInfoDto;
-import edu.ijse.gdse39.microfinance.dto.LoanDto;
-import edu.ijse.gdse39.microfinance.dto.LoanProductDto;
-import edu.ijse.gdse39.microfinance.dto.MemberDto;
+import edu.ijse.gdse39.microfinance.dto.*;
 
 import java.util.ArrayList;
 
@@ -18,4 +15,10 @@ public interface LoanService {
     ArrayList<LoanProductDto> getLoanProductList();
 
     boolean saveNewLoan(LoanAddInfoDto loanAddInfoDto, ArrayList<MemberDto> guarentorList,MemberDto selectedMember,ArrayList<LoanProductDto> loanProductList);
+
+    CustomerFeedbackDataDto getCustomerFeedback(int memId);
+
+    LoanDto getCustomerLoanDetailsForApproval(Integer memberId);
+
+    boolean approveLoan(MemberDto selectedMember, LoanDto customerLoanDetail);
 }

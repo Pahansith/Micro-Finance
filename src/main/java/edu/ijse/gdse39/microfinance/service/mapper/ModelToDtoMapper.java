@@ -76,4 +76,23 @@ public class ModelToDtoMapper {
         }
         return dtoList;
     }
+
+    public CustomerFeedbackDataDto mapFeedbackModel(CustomerFeedbackDataModel customerFeedbackDataModel) {
+        return new CustomerFeedbackDataDto(customerFeedbackDataModel.getLoanHistory(),customerFeedbackDataModel.getCustomerProperties(),customerFeedbackDataModel.getCustomerBusiness(),customerFeedbackDataModel.getMemberModel().getMemberId());
+    }
+
+    public LoanDto mapLoanModel(LoanModel loanModel) {
+        return new LoanDto(loanModel.getLoanId(),loanModel.getLoanNumber(),loanModel.getLoanProductModel().getProductName(),loanModel.getApprovedLoanAmount(),loanModel.getIntRate(),loanModel.getLoanStatus(),Integer.toString(loanModel.getPeriodInMonths())+"W");
+    }
+
+    public ArrayList<LoanScheduleDto> mapLoanScheduleModelList(List<LoanScheduleModel> modelList) {
+        ArrayList<LoanScheduleDto> dtoList = new ArrayList<>();
+
+        for (LoanScheduleModel product:
+                modelList) {
+            LoanScheduleDto loanScheduleDto = new LoanScheduleDto(product.getId(),product.getPaidDate(),product.getPaidTotal(),product.getLoanModel().getLoanId());
+            dtoList.add(loanScheduleDto);
+        }
+        return dtoList;
+    }
 }

@@ -108,9 +108,6 @@
                         <li>
                             <a href="branch-search">Branch Manager Approval</a>
                         </li>
-                        <li>
-                            <a href="issue-loan">Loan Issue</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -175,7 +172,7 @@
             society</p>
         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-            <form id="submitForm" action="" class=" form-inline" style="margin-left: 10px;">
+            <form id="submitForm" method="post" class=" form-inline" style="margin-left: 10px;">
                 <%--<button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>--%>
 
                 <div class="form-group">
@@ -207,11 +204,11 @@
         <div class="form-group">
             <table id="loanListTable" class="table table-responsive">
                 <thead>
+                <th>ID</th>
                 <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>JHS</th>
+                <th>NIC</th>
+                <th>Home Town</th>
+                <th>Group</th>
                 </thead>
                 <tbody>
 
@@ -242,7 +239,7 @@
 
 <script>
 
-    function goLoanApprove(customerId) {
+    function goBranchRecomView(customerId) {
         var url = "loanApproveView?mem-id="+customerId+"";
         var $frm = $("#submitForm");
         $frm.attr('action',url);
@@ -311,7 +308,7 @@
                         '<td>'+t.nic+'</td>' +
                         '<td>'+t.hometown+'</td>' +
                         '<td>'+t.group+'</td>' +
-                        '<td><button class="btn btn-default" type="button" onclick="goLoanApprove('+t.memberId+')">Approve Loan</button></td>'+
+                        '<td><button class="btn btn-default" type="button" onclick="goBranchRecomView('+t.memberId+')">Approve Loan</button></td>'+
                         '</tr>';
                 });
 

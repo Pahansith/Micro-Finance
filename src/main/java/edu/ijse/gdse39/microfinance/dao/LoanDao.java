@@ -18,4 +18,10 @@ public interface LoanDao {
     List<LoanProductModel> getLoanProductList();
 
     Serializable saveNewLoan(LoanModel loanModel);
+
+    LoanModel getCustomerLoanDetailsForApproval(Integer memberId);
+
+    boolean approveLoan(LoanModel loanModel);
+
+    LoanModel getApproveLoanModelOfCustomer(Integer id);
 }

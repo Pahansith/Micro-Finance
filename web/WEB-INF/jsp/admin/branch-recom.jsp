@@ -110,9 +110,6 @@
                         <li>
                             <a href="branch-search">Branch Manager Approval</a>
                         </li>
-                        <li>
-                            <a href="issue-loan">Loan Issue</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -197,33 +194,36 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="l-history">Loan History :</label>
-                                            <select id="l-history" class="selectpicker show-tick form-control">
+                                            <input type="text" id="l-history" name="l-history" value="${customerFeedback.loanHistory}"/>
+                                            <%--<select id="l-history" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Rent </option>
                                                 <option>Boy</option>
                                                 <option>used</option>
 
-                                            </select>
+                                            </select>--%>
                                         </div>
                                         <div class="form-group">
                                             <label for="c-properties">Customer Properties :</label>
-                                            <select id="c-properties" class="selectpicker show-tick form-control">
+                                            <%--<select id="c-properties" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Rent </option>
                                                 <option>Boy</option>
                                                 <option>used</option>
 
-                                            </select>
+                                            </select>--%>
+                                            <input type="text" id="c-properties" name="c-properties" value="${customerFeedback.customerProperties}"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="c-business">Customer Business :</label>
-                                            <select id="c-business" class="selectpicker show-tick form-control">
+                                            <%--<select id="c-business" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Rent </option>
                                                 <option>Boy</option>
                                                 <option>used</option>
 
-                                            </select>
+                                            </select>--%>
+                                            <input type="text" id="c-business" name="c-business" value="${customerFeedback.customerBusiness}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -237,25 +237,26 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="l-prod">Loan Product :</label>
-                                            <select id="l-prod" class="selectpicker show-tick form-control">
+                                            <%--<select id="l-prod" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Rent </option>
                                                 <option>Boy</option>
                                                 <option>used</option>
 
-                                            </select>
+                                            </select>--%>
+                                            <input id="l-prod" class="l-amt" value="${customerLoanDetail.productName}" name="loanProduct" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="l-amt">Loan Amount :</label>
-                                            <input id="l-amt" class="l-amt" value="" placeholder="Enter Loan Amount" name="property_video" type="text">
+                                            <input id="l-amt" class="l-amt" value="${customerLoanDetail.amount}" placeholder="Enter Loan Amount" name="property_video" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="l-term">Loan Term :</label><br>
-                                            <span id="l-term" style="margin-left: 15px;">48W</span>
+                                            <span id="l-term" style="margin-left: 15px;">${customerLoanDetail.defPeriod}</span>
                                         </div>
                                         <div class="form-group">
                                             <label for="l-rate">Interest Rate :</label><br>
-                                            <span id="l-rate" style="margin-left: 15px;">12.00%</span>
+                                            <span id="l-rate" style="margin-left: 15px;">${customerLoanDetail.interestRate}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -267,11 +268,11 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-primary' name='next' value='Next'/>
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Approve' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
+                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Approve' onclick="issueNewLoan()" style="margin-left: 10px;width: 90%"/>
                             </div>
                             &nbsp;
                             <div class="pull-right">
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Decline' onclick="submitRecords()" />
+                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Decline' onclick="cancelLoan()" />
                             </div>
                             <div class="pull-left">
                                 <input type='button' class='btn btn-previous btn-default' name='previous'
@@ -288,18 +289,36 @@
 </div>
 
 <script>
-    function submitRecords() {
-        bootbox.alert({
-            message : "Added Succesfull",
-            backdrop : true,
-            selected : false
-        }).find('.modal-content').css({
-            'margin-top': 225
+    function issueNewLoan() {
+        $.ajax({
+            type: "POST",
+            url: 'approveLoan',
+            success: function (values) {
+                bootbox.alert({
+                    message : values,
+                    backdrop : true,
+                    selected : false,
+                    callback : function () {
+                        window.open("branch-search","_self");
+                    }
+                }).find('.modal-content').css({
+                    'margin-top': 225
+                });
+            },
+            error : function () {
+                bootbox.alert({
+                    message : "Adding Failed",
+                    backdrop : true,
+                    selected : false
+                }).find('.modal-content').css({
+                    'margin-top': 225
+                });
+            }
         });
-
-        bootbox.dialog({show: false})
-            .off("shown.bs.modal")
-            .modal("show");
+    }
+    
+    function cancelLoan() {
+        
     }
 </script>
 
