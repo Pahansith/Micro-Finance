@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Pahansith on 10/3/2017
  * @project MicroFinance
  */
+
 @Controller
 public class IndexController {
 

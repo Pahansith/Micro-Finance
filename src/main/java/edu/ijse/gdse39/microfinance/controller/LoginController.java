@@ -1,5 +1,8 @@
 package edu.ijse.gdse39.microfinance.controller;
 
+import edu.ijse.gdse39.microfinance.dto.LoginInfoDto;
+import edu.ijse.gdse39.microfinance.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,14 +18,23 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class LoginController {
+    @Autowired
+    LoginService loginService;
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView loginUser(@RequestParam(value = "username") String userName,
                                   @RequestParam(value = "password") String password, HttpServletRequest request){
 
         HttpSession session = request.getSession();
-        session.setAttribute("loggedInUserId",1);
+        LoginInfoDto loginInfoDto = loginService.logUser(userName, password);
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin/admin-home");
+        if(null != loginInfoDto){
+            session.setAttribute("loggedInUserId",loginInfoDto.getId());
+            session.setAttribute("loginInfo",loginInfoDto);
+            mv.setViewName("admin/admin-home");
+            return mv;
+        }
+        mv.setViewName("admin/error-page");
         return mv;
 
     }

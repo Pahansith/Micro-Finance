@@ -24,15 +24,6 @@ public class MemberDaoImpl implements MemberDao{
     @Autowired
     SessionFactory sessionFactory;
 
-    public int saveProvince(ProvinceModel p){
-        Serializable save = sessionFactory.getCurrentSession().save(p);
-        if (save!=null){
-            return 1;
-        }else{
-            return 0;
-        }
-    }
-
     @Override
     public List<MemberModel> getMemberListForNewLoan(int societyId) {
         List<MemberModel> memberList = null;
@@ -90,5 +81,23 @@ public class MemberDaoImpl implements MemberDao{
             session.close();
         }
         return memberList;
+    }
+
+    @Override
+    public boolean saveMember(MemberModel memberModel) {
+        Session session = sessionFactory.openSession();
+        Transaction txn = null;
+        try{
+            txn = session.beginTransaction();
+            session.save(memberModel);
+            txn.commit();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            txn.rollback();
+            return false;
+        }finally {
+            session.close();
+        }
     }
 }

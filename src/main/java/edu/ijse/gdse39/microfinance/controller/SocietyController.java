@@ -1,7 +1,9 @@
 package edu.ijse.gdse39.microfinance.controller;
 
 import com.google.gson.Gson;
+import edu.ijse.gdse39.microfinance.dto.GroupDto;
 import edu.ijse.gdse39.microfinance.dto.SocietyDto;
+import edu.ijse.gdse39.microfinance.service.GroupService;
 import edu.ijse.gdse39.microfinance.service.SocietyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,10 @@ public class SocietyController {
 
     @Autowired
     SocietyService societyService;
+
+    @Autowired
+    GroupService groupService;
+
     @RequestMapping(value = "/add-society")
     public String getSocietyAddView(){
         return "admin/add-society";
@@ -36,5 +42,12 @@ public class SocietyController {
         ArrayList<SocietyDto> societyByBranch = societyService.getSocietyByBranch(Integer.parseInt(branchId));
         Gson gson = new Gson();
         return gson.toJson(societyByBranch);
+    }
+
+    @RequestMapping(value = "/getSelectedGroup")
+    public @ResponseBody String getSelectedGroup(@RequestParam(value = "socId") String societyId){
+        ArrayList<GroupDto> groupList = groupService.getGroupBySociety(Integer.parseInt(societyId));
+        Gson gson = new Gson();
+        return gson.toJson(groupList);
     }
 }

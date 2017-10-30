@@ -12,4 +12,7 @@ import java.util.ArrayList;
 
 public interface GroupService {
     ArrayList<MemberDto> getMemberGroupDetails(int memberId);
+
+    ArrayList<GroupDto> getGroupBySociety(int i);
+
 }

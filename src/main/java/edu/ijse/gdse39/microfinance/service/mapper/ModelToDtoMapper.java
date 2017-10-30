@@ -95,4 +95,18 @@ public class ModelToDtoMapper {
         }
         return dtoList;
     }
+
+    public ArrayList<GroupDto> mapGroupModelList(List<GroupModel> groupModels) {
+        ArrayList<GroupDto> groupDtos = new ArrayList<>();
+        for (GroupModel groupModel:
+             groupModels) {
+            GroupDto groupDto = new GroupDto(groupModel.getGroupId(),groupModel.getGroupCode(),groupModel.getGroupName());
+            groupDtos.add(groupDto);
+        }
+        return groupDtos;
+    }
+
+    public LoginInfoDto mapUserAccount(SystemUser user, RoleModel role) {
+        return new LoginInfoDto(user.getId(),user.getName(),role.getRole_type().toString());
+    }
 }

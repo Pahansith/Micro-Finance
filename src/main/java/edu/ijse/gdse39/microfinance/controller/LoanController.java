@@ -59,7 +59,6 @@ public class LoanController {
         session.setAttribute("loanProductList",loanProductList);
         session.setAttribute("selectedMember",selectedMember);
         session.setAttribute("customerLoanList",customerPreviousLoanList);
-        session.setAttribute("loggedInUserId",1);
 
         mv.setViewName("admin/add-newLoan");
         return mv;
@@ -89,11 +88,8 @@ public class LoanController {
         ArrayList<MemberDto> memberGroupDetails = (ArrayList<MemberDto>) session.getAttribute("memberGroupDetails");
         ArrayList<LoanProductDto> loanProductList = (ArrayList<LoanProductDto>) session.getAttribute("loanProductList");
         loanInfo.setLoggedInUserId(loggedInUserId);
-        boolean isSaved = loanService.saveNewLoan(loanInfo, memberGroupDetails, selectedMember, loanProductList);
-        if (isSaved){
-            return "Success";
-        }
-        return "Error Occurred";
+        String result = loanService.saveNewLoan(loanInfo, memberGroupDetails, selectedMember, loanProductList);
+        return result;
     }
 
     @RequestMapping(value = "/loanApproveView",method = RequestMethod.POST)

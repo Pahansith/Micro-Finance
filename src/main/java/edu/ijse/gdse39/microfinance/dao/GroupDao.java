@@ -1,7 +1,9 @@
 package edu.ijse.gdse39.microfinance.dao;
 
+import edu.ijse.gdse39.microfinance.model.GroupModel;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,4 +13,8 @@ import java.util.List;
 
 public interface GroupDao {
     List<MemberModel> getMemberGroupDetails(int memberId);
+
+    List<GroupModel> getGroupBySociety(int societyId);
+
+    GroupModel searchSelectedGroup(int groupList);
 }

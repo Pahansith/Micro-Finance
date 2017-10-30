@@ -18,4 +18,6 @@ public interface MemberDao {
     MemberModel getSelectedMember(int memId);
 
     List<MemberModel> getPendingApproveLoanList(int societyId);
+
+    boolean saveMember(MemberModel memberModel);
 }

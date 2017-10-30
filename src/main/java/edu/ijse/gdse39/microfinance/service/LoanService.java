@@ -14,7 +14,7 @@ public interface LoanService {
 
     ArrayList<LoanProductDto> getLoanProductList();
 
-    boolean saveNewLoan(LoanAddInfoDto loanAddInfoDto, ArrayList<MemberDto> guarentorList,MemberDto selectedMember,ArrayList<LoanProductDto> loanProductList);
+    String saveNewLoan(LoanAddInfoDto loanAddInfoDto, ArrayList<MemberDto> guarentorList,MemberDto selectedMember,ArrayList<LoanProductDto> loanProductList);
 
     CustomerFeedbackDataDto getCustomerFeedback(int memId);
 

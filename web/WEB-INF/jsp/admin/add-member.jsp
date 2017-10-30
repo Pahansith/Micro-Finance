@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -173,7 +174,7 @@
         <div class="clearfix">
             <div class="wizard-container">
                 <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                    <form action="" method="">
+                    <form action="saveNewCustomer" method="POST">
                         <div class="wizard-header">
                             <h3>
                                 <b>Submit</b> New Customer <br>
@@ -195,7 +196,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="salutation">Salutation :</label>
-                                            <select id="salutation" class="selectpicker show-tick form-control">
+                                            <select id="salutation" name="salutation" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Mr </option>
                                                 <option>Mrs</option>
@@ -211,11 +212,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="lName">Last Name :</label><br>
-                                            <input id="lName" class="form-control" value="" placeholder="Last Name" name="fName" type="text">
+                                            <input id="lName" class="form-control" value="" placeholder="Last Name" name="lName" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="nic">NIC :</label>
-                                            <input id="nic" class="form-control" value="" placeholder="NIC" name="fName" type="text">
+                                            <input id="nic" class="form-control" value="" placeholder="NIC" name="nic" type="nic">
                                         </div>
                                     </div>
                                 </div>
@@ -229,27 +230,27 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="address-1">Address Line 1 :</label>
-                                            <input id="address-1" class="form-control" value="" placeholder="Address Line 1" name="fName" type="text">
+                                            <input id="address-1" class="form-control" value="" placeholder="Address Line 1" name="address_1" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="address-2">Address Line 2 :</label>
-                                            <input id="address-2" class="form-control" value="" placeholder="Address Line 2" name="fName" type="text">
+                                            <input id="address-2" class="form-control" value="" placeholder="Address Line 2" name="address_2" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="address-3">Address Line 3 :</label>
-                                            <input id="address-3" class="form-control" value="" placeholder="Address Line 3" name="fName" type="text">
+                                            <input id="address-3" class="form-control" value="" placeholder="Address Line 3" name="address_3" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="hometown">Home Town :</label>
-                                            <input id="hometown" class="form-control" value="" placeholder="Home Town" name="fName" type="text">
+                                            <input id="hometown" class="form-control" value="" placeholder="Home Town" name="hometown" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="mobile">Mobile :</label><br>
-                                            <input id="mobile" class="form-control" value="" placeholder="Mobile" name="fName" type="text">
+                                            <input id="mobile" class="form-control" value="" placeholder="Mobile" name="mobile" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="telephone">Telephone :</label>
-                                            <input id="telephone" class="form-control" value="" placeholder="Telephone" name="fName" type="text">
+                                            <input id="telephone" class="form-control" value="" placeholder="Telephone" name="telephone" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -262,7 +263,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="business">Business Status :</label>
-                                            <select id="business" class="selectpicker show-tick form-control">
+                                            <select id="business" name="business" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Owned</option>
                                                 <option>Government</option>
@@ -271,7 +272,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="financial">Financial Status :</label>
-                                            <select id="financial" class="selectpicker show-tick form-control">
+                                            <select id="financial" name="financial" class="selectpicker show-tick form-control">
                                                 <option> -Status- </option>
                                                 <option>Good</option>
                                                 <option>Potentially Growth</option>
@@ -284,46 +285,36 @@
                             </div>
 
                             <div class="tab-pane" id="step4">
-                                <h4 class="info-text">Property Details </h4>
+                                <h4 class="info-text">Account Details </h4>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="province">Province :</label>
-                                            <select id="province" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Owned</option>
-                                                <option>Government</option>
-                                                <option>Private</option>
+                                            <label for="provinceList">Province :</label>
+                                            <select id="provinceList" name="provinceList" class="selectpicker" data-live-search="true"
+                                                    data-live-search-style="begins" title="Select Province">
+                                                <c:forEach items="${provinceList}" var="list">
+                                                    <option value="${list.provinceId}">${list.provinceName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="branchList">Branch :</label>
+                                            <select id="branchList" name="branchList" class="selectpicker" data-live-search="true"
+                                                    data-live-search-style="begins" title="Select Branch">
+
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="branch">Branch :</label>
-                                            <select id="branch" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Good</option>
-                                                <option>Potentially Growth</option>
-                                                <option>Stable</option>
-                                                <option>Risky</option>
+                                            <label for="societyList">Society :</label>
+                                            <select id="societyList" name="societyList" class="selectpicker" data-live-search="true"
+                                                    data-live-search-style="begins" title="Select Society">
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="society">Society :</label>
-                                            <select id="society" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Good</option>
-                                                <option>Potentially Growth</option>
-                                                <option>Stable</option>
-                                                <option>Risky</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="group">Group :</label>
-                                            <select id="group" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Good</option>
-                                                <option>Potentially Growth</option>
-                                                <option>Stable</option>
-                                                <option>Risky</option>
+                                            <label for="groupList">Group :</label>
+                                            <select id="groupList" name="groupList" class="selectpicker" data-live-search="true"
+                                                    data-live-search-style="begins" title="Select Group">
                                             </select>
                                         </div>
                                     </div>
@@ -336,7 +327,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-primary' name='next' value='Next'/>
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Save' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
+                                <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Save' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
                             </div>
                             <div class="pull-left">
                                 <input type='button' class='btn btn-previous btn-default' name='previous'
@@ -351,16 +342,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    function submitRecords() {
-
-
-
-
-
-    }
-</script>
 
 <script src="assets/js/modernizr-2.6.2.min.js"></script>
 <script src="assets/js//jquery-1.10.2.min.js"></script>
@@ -379,7 +360,73 @@
 <script src="assets/js/wizard.js"></script>
 <script src="assets/js/bootbox.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+    $("#provinceList").on("change",function () {
+        var id = $("#provinceList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedBranch",
+            data :{provinceId:id},
+            success: function (values) {
+                $('#branchList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#branchList')
+                        .append($("<option></option>")
+                            .attr("value",t.branchId)
+                            .text(t.name));
+                });
 
+                $('.selectpicker').selectpicker('refresh');
+
+
+
+            }
+        });
+    });
+
+    $("#branchList").on("change",function () {
+        var id = $("#branchList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedSociety",
+            data :{branchId:id},
+            success: function (values) {
+                $('#societyList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#societyList')
+                        .append($("<option></option>")
+                            .attr("value",t.societyId)
+                            .text(t.societyName));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    });
+
+    $("#societyList").on("change",function () {
+        var id = $("#societyList").val();
+        $.ajax({
+            type: "POST",
+            url: "getSelectedGroup",
+            data :{socId:id},
+            success: function (values) {
+                $('#groupList').empty();
+                var jsonArr = JSON.parse(values);
+                jsonArr.forEach(function (t) {
+                    $('#groupList')
+                        .append($("<option></option>")
+                            .attr("value",t.groupId)
+                            .text(t.groupName));
+                });
+
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

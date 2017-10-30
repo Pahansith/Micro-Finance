@@ -3,6 +3,7 @@ package edu.ijse.gdse39.microfinance.dao.impl;
 import edu.ijse.gdse39.microfinance.dao.LoanDao;
 import edu.ijse.gdse39.microfinance.model.LoanModel;
 import edu.ijse.gdse39.microfinance.model.LoanProductModel;
+import edu.ijse.gdse39.microfinance.model.MemberModel;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,4 +142,5 @@ public class LoanDaoImpl implements LoanDao{
             session.close();
         }
     }
+
 }

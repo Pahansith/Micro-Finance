@@ -56,7 +56,7 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public boolean saveNewLoan(LoanAddInfoDto loanAddInfoDto, ArrayList<MemberDto> groupList,MemberDto selectedMember,ArrayList<LoanProductDto> loanProductList) {
+    public String saveNewLoan(LoanAddInfoDto loanAddInfoDto, ArrayList<MemberDto> groupList,MemberDto selectedMember,ArrayList<LoanProductDto> loanProductList) {
         DtoToModelMapper mapper = new DtoToModelMapper();
         LoanModel loanModel = mapper.mapLoanInfoDtoToLoanModel(loanAddInfoDto);
 
@@ -86,10 +86,10 @@ public class LoanServiceImpl implements LoanService {
         if(null != result){
             Serializable result2 = customerFeedbackDao.saveFeedback(customerFeedbackDataModel);
             if (null != result2){
-                return true;
+                return "Loan has successfully added\n Loan number is : "+Integer.toString(loanModel.getLoanNumber());
             }
         }
-        return false;
+        return "Failed";
 
     }
 

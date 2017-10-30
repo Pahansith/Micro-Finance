@@ -1,7 +1,9 @@
 package edu.ijse.gdse39.microfinance.service.impl;
 
 import edu.ijse.gdse39.microfinance.dao.GroupDao;
+import edu.ijse.gdse39.microfinance.dto.GroupDto;
 import edu.ijse.gdse39.microfinance.dto.MemberDto;
+import edu.ijse.gdse39.microfinance.model.GroupModel;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
 import edu.ijse.gdse39.microfinance.service.GroupService;
 import edu.ijse.gdse39.microfinance.service.mapper.ModelToDtoMapper;
@@ -25,5 +27,11 @@ public class GroupServiceImpl implements GroupService {
     public ArrayList<MemberDto> getMemberGroupDetails(int memberId) {
         List<MemberModel> memberGroupDetails = groupDao.getMemberGroupDetails(memberId);
         return new ModelToDtoMapper().mapMemberModelList(memberGroupDetails);
+    }
+
+    @Override
+    public ArrayList<GroupDto> getGroupBySociety(int societyId) {
+        List<GroupModel> groupModels = groupDao.getGroupBySociety(societyId);
+        return new ModelToDtoMapper().mapGroupModelList(groupModels);
     }
 }
