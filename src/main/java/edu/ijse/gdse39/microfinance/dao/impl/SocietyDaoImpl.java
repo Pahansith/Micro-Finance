@@ -1,7 +1,6 @@
 package edu.ijse.gdse39.microfinance.dao.impl;
 
 import edu.ijse.gdse39.microfinance.dao.SocietyDao;
-import edu.ijse.gdse39.microfinance.model.BranchModel;
 import edu.ijse.gdse39.microfinance.model.SocietyModel;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,5 +36,18 @@ public class SocietyDaoImpl implements SocietyDao {
             session.close();
         }
         return societyList;
+    }
+
+    @Override
+    public boolean save(SocietyModel societyModel) throws Exception {
+        Session session = sessionFactory.openSession();
+        try {
+            session.saveOrUpdate(societyModel);
+        } finally {
+            session.flush();
+            session.close();
+
+        }
+        return true;
     }
 }

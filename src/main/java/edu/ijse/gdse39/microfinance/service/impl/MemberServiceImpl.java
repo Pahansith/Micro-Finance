@@ -3,23 +3,18 @@ package edu.ijse.gdse39.microfinance.service.impl;
 import edu.ijse.gdse39.microfinance.dao.GroupDao;
 import edu.ijse.gdse39.microfinance.dao.LoanDao;
 import edu.ijse.gdse39.microfinance.dao.MemberDao;
-import edu.ijse.gdse39.microfinance.dao.impl.MemberDaoImpl;
 import edu.ijse.gdse39.microfinance.dto.MemberDto;
 import edu.ijse.gdse39.microfinance.model.GroupModel;
-import edu.ijse.gdse39.microfinance.model.LoanModel;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
-import edu.ijse.gdse39.microfinance.model.ProvinceModel;
 import edu.ijse.gdse39.microfinance.service.MemberService;
 import edu.ijse.gdse39.microfinance.service.mapper.ModelToDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author Pahansith on 9/29/2017

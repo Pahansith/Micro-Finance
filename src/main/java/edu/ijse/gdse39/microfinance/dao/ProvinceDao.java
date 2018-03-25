@@ -1,9 +1,7 @@
 package edu.ijse.gdse39.microfinance.dao;
 
-import edu.ijse.gdse39.microfinance.dto.ProvinceDto;
 import edu.ijse.gdse39.microfinance.model.ProvinceModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,4 +13,5 @@ public interface ProvinceDao {
 
     List<ProvinceModel> getProvinceList();
 
+    ProvinceModel findProvince(int i) throws Exception;
 }

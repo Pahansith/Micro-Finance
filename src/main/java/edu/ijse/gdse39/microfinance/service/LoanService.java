@@ -3,6 +3,7 @@ package edu.ijse.gdse39.microfinance.service;
 import edu.ijse.gdse39.microfinance.dto.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Pahansith on 10/10/2017
@@ -21,4 +22,6 @@ public interface LoanService {
     LoanDto getCustomerLoanDetailsForApproval(Integer memberId);
 
     boolean approveLoan(MemberDto selectedMember, LoanDto customerLoanDetail);
+
+    List<LoanDto> getMemberLoanDetails(Integer id) throws Exception;
 }

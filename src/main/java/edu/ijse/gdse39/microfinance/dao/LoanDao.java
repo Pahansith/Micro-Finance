@@ -2,10 +2,8 @@ package edu.ijse.gdse39.microfinance.dao;
 
 import edu.ijse.gdse39.microfinance.model.LoanModel;
 import edu.ijse.gdse39.microfinance.model.LoanProductModel;
-import edu.ijse.gdse39.microfinance.model.MemberModel;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

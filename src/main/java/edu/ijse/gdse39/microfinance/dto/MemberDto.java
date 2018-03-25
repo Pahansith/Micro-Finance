@@ -1,10 +1,5 @@
 package edu.ijse.gdse39.microfinance.dto;
 
-import edu.ijse.gdse39.microfinance.model.MemberModel;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 /**
  * @author Pahansith on 10/9/2017
  * @project MicroFinance

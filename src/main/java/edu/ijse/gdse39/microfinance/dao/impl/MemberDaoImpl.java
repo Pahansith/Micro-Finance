@@ -2,7 +2,6 @@ package edu.ijse.gdse39.microfinance.dao.impl;
 
 import edu.ijse.gdse39.microfinance.dao.MemberDao;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
-import edu.ijse.gdse39.microfinance.model.ProvinceModel;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,8 +9,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -89,7 +86,7 @@ public class MemberDaoImpl implements MemberDao{
         Transaction txn = null;
         try{
             txn = session.beginTransaction();
-            session.save(memberModel);
+            session.saveOrUpdate(memberModel);
             txn.commit();
             return true;
         }catch (Exception e){
@@ -97,6 +94,22 @@ public class MemberDaoImpl implements MemberDao{
             txn.rollback();
             return false;
         }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public MemberModel findByNic(String nic) throws Exception {
+        MemberModel member = null;
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from MemberModel m where m.nic =:nic");
+            query.setParameter("nic", nic);
+            member = (MemberModel) query.uniqueResult();
+            return member;
+        } finally {
+            session.flush();
             session.close();
         }
     }

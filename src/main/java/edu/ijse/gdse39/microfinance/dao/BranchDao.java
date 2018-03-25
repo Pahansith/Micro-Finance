@@ -2,7 +2,6 @@ package edu.ijse.gdse39.microfinance.dao;
 
 import edu.ijse.gdse39.microfinance.model.BranchModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,4 +12,9 @@ import java.util.List;
 public interface BranchDao {
     List<BranchModel> getBranchListByProvince(int provinceId);
 
+    List<BranchModel> findAll() throws Exception;
+
+    BranchModel findBranch(int i) throws Exception;
+
+    boolean save(BranchModel branchModel) throws Exception;
 }

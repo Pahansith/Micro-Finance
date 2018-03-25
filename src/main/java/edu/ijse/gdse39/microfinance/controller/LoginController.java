@@ -25,16 +25,31 @@ public class LoginController {
     public ModelAndView loginUser(@RequestParam(value = "username") String userName,
                                   @RequestParam(value = "password") String password, HttpServletRequest request){
 
-        HttpSession session = request.getSession();
-        LoginInfoDto loginInfoDto = loginService.logUser(userName, password);
         ModelAndView mv = new ModelAndView();
-        if(null != loginInfoDto){
-            session.setAttribute("loggedInUserId",loginInfoDto.getId());
-            session.setAttribute("loginInfo",loginInfoDto);
-            mv.setViewName("admin/admin-home");
-            return mv;
+        HttpSession session = request.getSession();
+        LoginInfoDto loginInfoDto = null;
+        try {
+            loginInfoDto = loginService.logUser(userName, password);
+            String userPrivilage = loginInfoDto.getUserPrivilage();
+
+
+            if (null != loginInfoDto) {
+                if (userPrivilage.equals("CUSTOMER")) {
+                    mv.setViewName("customer/customer-home");
+                    session.setAttribute("loginInfoDto", loginInfoDto);
+                    return mv;
+                }
+                session.setAttribute("loggedInUserId", loginInfoDto.getId());
+                session.setAttribute("loginInfo", loginInfoDto);
+                mv.setViewName("admin/admin-home");
+                return mv;
+            }
+            mv.setViewName("admin/error-page");
+        } catch (Exception e) {
+            e.printStackTrace();
+            mv.setViewName("admin/error-page");
         }
-        mv.setViewName("admin/error-page");
+
         return mv;
 
     }

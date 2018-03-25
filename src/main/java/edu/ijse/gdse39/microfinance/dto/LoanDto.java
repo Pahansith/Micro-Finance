@@ -16,6 +16,9 @@ public class LoanDto {
     String defPeriod;
     String status;
 
+    String guarentor1;
+    String guarentor2;
+
     public LoanDto() {
     }
 
@@ -92,5 +95,21 @@ public class LoanDto {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getGuarentor1() {
+        return guarentor1;
+    }
+
+    public void setGuarentor1(String guarentor1) {
+        this.guarentor1 = guarentor1;
+    }
+
+    public String getGuarentor2() {
+        return guarentor2;
+    }
+
+    public void setGuarentor2(String guarentor2) {
+        this.guarentor2 = guarentor2;
     }
 }

@@ -9,6 +9,9 @@ public class SocietyDto {
 
     private Integer societyId;
     private String societyName;
+    private String president;
+    private String secretary;
+    private String branchId;
 
     public SocietyDto() {
     }
@@ -18,6 +21,13 @@ public class SocietyDto {
         this.societyName = societyName;
     }
 
+    public SocietyDto(String societyName, String president, String secretary, String branchId) {
+
+        this.societyName = societyName;
+        this.president = president;
+        this.secretary = secretary;
+        this.branchId = branchId;
+    }
 
     public Integer getSocietyId() {
         return societyId;
@@ -33,5 +43,29 @@ public class SocietyDto {
 
     public void setSocietyName(String societyName) {
         this.societyName = societyName;
+    }
+
+    public String getPresident() {
+        return president;
+    }
+
+    public void setPresident(String president) {
+        this.president = president;
+    }
+
+    public String getSecretary() {
+        return secretary;
+    }
+
+    public void setSecretary(String secretary) {
+        this.secretary = secretary;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 }

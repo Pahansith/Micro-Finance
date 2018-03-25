@@ -8,6 +8,7 @@ import edu.ijse.gdse39.microfinance.service.LoginService;
 import edu.ijse.gdse39.microfinance.service.mapper.ModelToDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Pahansith on 10/21/2017
@@ -15,13 +16,14 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
+@Transactional
 public class LoginServiceImpl implements LoginService{
 
     @Autowired
     UserAccountDao userAccountDao;
 
     @Override
-    public LoginInfoDto logUser(String userName, String pwd) {
+    public LoginInfoDto logUser(String userName, String pwd) throws Exception {
         SystemUser user = userAccountDao.getUser(userName, pwd);
         RoleModel role = null;
         if (null != user){

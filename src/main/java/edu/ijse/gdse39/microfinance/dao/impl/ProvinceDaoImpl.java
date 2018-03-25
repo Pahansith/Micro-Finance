@@ -36,4 +36,18 @@ public class ProvinceDaoImpl implements ProvinceDao {
         }
         return provinceList;
     }
+
+    @Override
+    public ProvinceModel findProvince(int i) throws Exception {
+        Session session = sessionFactory.openSession();
+        ProvinceModel provinceModel = null;
+        try {
+            session.beginTransaction();
+            provinceModel = (ProvinceModel) session.get(ProvinceModel.class, i);
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return provinceModel;
+    }
 }

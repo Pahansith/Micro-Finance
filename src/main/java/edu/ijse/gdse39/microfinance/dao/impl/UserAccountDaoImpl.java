@@ -22,7 +22,7 @@ public class UserAccountDaoImpl implements UserAccountDao {
     @Autowired
     SessionFactory sessionFactory;
     @Override
-    public SystemUser getUser(String userName, String password) {
+    public SystemUser getUser(String userName, String password) throws Exception {
         Session session = sessionFactory.openSession();
         SystemUser user = null;
         Transaction txn = null;

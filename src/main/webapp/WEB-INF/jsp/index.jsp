@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>WeGrow Lanka Micro Credit</title>
+    <title>Micro Credit | Home Page</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -54,8 +54,8 @@
             <div class="col-md-5 col-sm-8  col-xs-12">
                 <div class="header-half header-call">
                     <p>
-                        <span><i class="pe-7s-call"></i> +94 71 430 3351</span>
-                        <span><i class="pe-7s-mail"></i> pahansith.wsg@gmail.com</span>
+                        <span><i class="pe-7s-call"></i>+94 0714303351</span>
+                        <span><i class="pe-7s-mail"></i>pahansith.wsg@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -94,6 +94,11 @@
             <div class="button navbar-right">
                 <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register')" data-wow-delay="0.45s">Login</button>
             </div>
+            <div class="button navbar-right">
+                <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('account-create')"
+                        data-wow-delay="0.45s">Register
+                </button>
+            </div>
             <ul class="main-nav nav navbar-nav navbar-right">
 
                 <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Properties</a></li>
@@ -120,7 +125,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
                 <h2>GROW UP IN FINANCIAL</h2>
-                <p>We Grow Lanka Micro Credit offers you attractive loan scheams to improve your financial independancy!</p>
+                <p>Micro Credit offers you attractive loan scheams to improve your financial independancy!</p>
             </div>
         </div>
     </div>
@@ -151,7 +156,7 @@
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                                 <!-- /.feature title -->
-                                <h2>We Grow</h2>
+                                <h2>Home</h2>
                             </div>
                         </div>
                     </div>
@@ -361,7 +366,7 @@
                 </div>
             </div>
             <div class="col-xs-12">
-                <p  class="asks-call">QUESTIONS? CALL US  : <span class="strong"> + 94-714- 303-351</span></p>
+                <p class="asks-call">QUESTIONS? CALL US :+94 038 229 7124</p>
             </div>
         </div>
     </div>
@@ -383,9 +388,9 @@
                         <p>We fulfil the customer’s financial needs with the best suitable loan methods and add value by protecting their financial safety.
                             We are the most prominent financial partner of the micro credit sector of Sri Lanka.</p>
                         <ul class="footer-adress">
-                            <li><i class="pe-7s-map-marker strong"> </i> 12/30 Hill Street Panadura</li>
-                            <li><i class="pe-7s-mail strong"> </i> wegrowsrilanka@slt.com</li>
-                            <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                            <li><i class="pe-7s-map-marker strong"> </i>126/1 Pahan, Horagoda, Telijjawila</li>
+                            <li><i class="pe-7s-mail strong"> </i>pahansith.wsg@gmail.com</li>
+                            <li><i class="pe-7s-call strong"> </i>+94 0714303351</li>
                         </ul>
                     </div>
                 </div>

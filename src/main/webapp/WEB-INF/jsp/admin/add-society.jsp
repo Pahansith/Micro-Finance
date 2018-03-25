@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -173,7 +174,7 @@
         <div class="clearfix">
             <div class="wizard-container">
                 <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                    <form action="" method="">
+                    <form action="save-society" method="post">
                         <div class="wizard-header">
                             <h3>
                                 <b>Add</b> New Society <br>
@@ -192,43 +193,26 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="l-history">Branch :</label>
-                                            <select id="l-history" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Mr </option>
-                                                <option>Mrs</option>
-                                                <option>Ms</option>
-                                                <option>Ven</option>
-                                                <option>Dr</option>
-
+                                            <select id="l-history" class="selectpicker show-tick form-control"
+                                                    name="branchId">
+                                                <option> -Select-</option>
+                                                <c:forEach items="${branchList}" var="branch">
+                                                    <option value="${branch.branchId}">${branch.name} </option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Society Name :</label>
-                                            <input id="name" class="form-control" value="" placeholder="First Name" name="fName" type="text">
+                                            <input id="name" class="form-control" value="" placeholder="First Name"
+                                                   name="name" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="president">President :</label>
-                                            <select id="president" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Mr </option>
-                                                <option>Mrs</option>
-                                                <option>Ms</option>
-                                                <option>Ven</option>
-                                                <option>Dr</option>
-
-                                            </select>
+                                            <input type="text" name="president" class="form-control" id="president">
                                         </div>
                                         <div class="form-group">
                                             <label for="secretory">Secretory :</label>
-                                            <select id="secretory" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Mr </option>
-                                                <option>Mrs</option>
-                                                <option>Ms</option>
-                                                <option>Ven</option>
-                                                <option>Dr</option>
-
-                                            </select>
+                                            <input type="text" name="secretory" class="form-control" id="secretory">
                                         </div>
                                     </div>
                                 </div>
@@ -237,7 +221,8 @@
 
                         <div class="wizard-footer">
                             <div class="pull-right">
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Save' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
+                                <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Save'
+                                       onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
                             </div>
                             <div class="clearfix"></div>
                         </div>

@@ -2,13 +2,14 @@ package edu.ijse.gdse39.microfinance.dao.impl;
 
 import edu.ijse.gdse39.microfinance.dao.LoanScheduleDao;
 import edu.ijse.gdse39.microfinance.model.LoanScheduleModel;
-import org.hibernate.*;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

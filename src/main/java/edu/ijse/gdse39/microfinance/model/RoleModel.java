@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "role_mst")
 public class RoleModel {
     public enum ROLE_TYPE{
-        MANAGER,ADMIN,CREDIT_MANAGER
+        MANAGER, ADMIN, CREDIT_MANAGER, CUSTOMER
     }
 
     public enum USER_PRIVILAGE{

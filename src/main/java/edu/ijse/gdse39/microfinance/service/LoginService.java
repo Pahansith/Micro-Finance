@@ -8,5 +8,5 @@ import edu.ijse.gdse39.microfinance.dto.LoginInfoDto;
  */
 
 public interface LoginService {
-    public LoginInfoDto logUser(String userName, String pwd);
+    public LoginInfoDto logUser(String userName, String pwd) throws Exception;
 }

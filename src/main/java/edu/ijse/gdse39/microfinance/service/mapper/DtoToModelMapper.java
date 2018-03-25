@@ -1,10 +1,10 @@
 package edu.ijse.gdse39.microfinance.service.mapper;
 
+import edu.ijse.gdse39.microfinance.dto.BranchDto;
 import edu.ijse.gdse39.microfinance.dto.LoanAddInfoDto;
 import edu.ijse.gdse39.microfinance.dto.LoanProductDto;
-import edu.ijse.gdse39.microfinance.dto.MemberDto;
+import edu.ijse.gdse39.microfinance.dto.SocietyDto;
 import edu.ijse.gdse39.microfinance.model.*;
-import edu.ijse.gdse39.microfinance.service.helper.NumberToWordConverter;
 
 /**
  * @author Pahansith on 10/12/2017
@@ -27,5 +27,14 @@ public class DtoToModelMapper {
 
     public CustomerFeedbackDataModel mapMemberFeedback(LoanAddInfoDto loanAddInfoDto, MemberModel selectedMember) {
         return new CustomerFeedbackDataModel(loanAddInfoDto.getLoanHistory(),loanAddInfoDto.getCustomerProperties(),loanAddInfoDto.getCustomerBusiness(),selectedMember);
+    }
+
+    public SocietyModel mapSocietyDto(SocietyDto societyDto) {
+        return new SocietyModel(societyDto.getSocietyName(), societyDto.getPresident(), societyDto.getSecretary(), null);
+    }
+
+    public BranchModel mapBranchDto(BranchDto branchDto) {
+        return new BranchModel(branchDto.getName(), branchDto.getAddress(), branchDto.getTelephone(), branchDto.getFax(), null);
+
     }
 }

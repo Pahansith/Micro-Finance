@@ -1,7 +1,6 @@
 package edu.ijse.gdse39.microfinance.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author Pahansith on 9/29/2017
@@ -45,9 +44,10 @@ public class MemberModel {
     @ManyToOne
     private GroupModel groupModel;
 
-    public MemberModel(String fName, String lName, String mobile, String nic, String address_1, String address_2,
-                       String address_3, String hometown, SALUTATION salutation, EMPLOYEE_STATUS employeeStatus, FINANCIAL_STATUS financialStatus,
-                       GroupModel groupModel) {
+    @OneToOne(optional = true)
+    private SystemUser systemUser;
+
+    public MemberModel(String fName, String lName, String mobile, String nic, String address_1, String address_2, String address_3, String hometown, SALUTATION salutation, EMPLOYEE_STATUS employeeStatus, FINANCIAL_STATUS financialStatus, GroupModel groupModel, SystemUser systemUser) {
         this.fName = fName;
         this.lName = lName;
         this.mobile = mobile;
@@ -58,8 +58,9 @@ public class MemberModel {
         this.hometown = hometown;
         this.salutation = salutation;
         this.employeeStatus = employeeStatus;
-        this.groupModel = groupModel;
         this.financialStatus = financialStatus;
+        this.groupModel = groupModel;
+        this.systemUser = systemUser;
     }
 
     public MemberModel() {}
@@ -168,7 +169,11 @@ public class MemberModel {
         this.groupModel = groupModel;
     }
 
+    public SystemUser getSystemUser() {
+        return systemUser;
+    }
 
-
-
+    public void setSystemUser(SystemUser systemUser) {
+        this.systemUser = systemUser;
+    }
 }

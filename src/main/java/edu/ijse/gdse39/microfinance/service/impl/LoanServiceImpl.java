@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -108,7 +107,10 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public LoanDto getCustomerLoanDetailsForApproval(Integer memberId) {
         LoanModel loanModel = loanDao.getCustomerLoanDetailsForApproval(memberId);
-        return new ModelToDtoMapper().mapLoanModel(loanModel);
+        if (loanModel != null) {
+            return new ModelToDtoMapper().mapLoanModel(loanModel);
+        }
+        return null;
     }
 
     @Override
@@ -173,5 +175,17 @@ public class LoanServiceImpl implements LoanService {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<LoanDto> getMemberLoanDetails(Integer userAccountId) throws Exception {
+        List<LoanModel> loanList = userDao.findLoanOfUser(userAccountId);
+        List<LoanDto> loanDtoList = new ArrayList<>();
+
+        for (LoanModel loanModel : loanList) {
+            LoanDto loanDto = new ModelToDtoMapper().mapLoanModel(loanModel);
+            loanDtoList.add(loanDto);
+        }
+        return loanDtoList;
     }
 }

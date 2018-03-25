@@ -127,6 +127,9 @@
                             <li>
                                 <a href="update-member">Update Details</a>
                             </li>
+                            <li>
+                                <a href="approve-member">Authorize Member</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="dropdown ymm-sw " data-wow-delay="0.1s">

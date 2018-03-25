@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pahansith
@@ -173,7 +174,7 @@
         <div class="clearfix">
             <div class="wizard-container">
                 <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                    <form action="" method="">
+                    <form action="save-branch" method="post">
                         <div class="wizard-header">
                             <h3>
                                 <b>Add</b> New Branch <br>
@@ -192,31 +193,33 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="l-history">Province :</label>
-                                            <select id="l-history" class="selectpicker show-tick form-control">
-                                                <option> -Status- </option>
-                                                <option>Mr </option>
-                                                <option>Mrs</option>
-                                                <option>Ms</option>
-                                                <option>Ven</option>
-                                                <option>Dr</option>
-
+                                            <select id="l-history" class="selectpicker show-tick form-control"
+                                                    name="provinceId">
+                                                <option> -Select-</option>
+                                                <c:forEach items="${provinceList}" var="province">
+                                                    <option value="${province.provinceId}">${province.provinceName}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Branch Name :</label>
-                                            <input id="name" class="form-control" value="" placeholder="First Name" name="fName" type="text">
+                                            <input id="name" class="form-control" value="" placeholder="First Name"
+                                                   name="name" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Address :</label><br>
-                                            <input id="address" class="form-control" value="" placeholder="Last Name" name="fName" type="text">
+                                            <input id="address" class="form-control" value="" placeholder="Last Name"
+                                                   name="address" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="tp">Telephone :</label>
-                                            <input id="tp" class="form-control" value="" placeholder="NIC" name="fName" type="text">
+                                            <input id="tp" class="form-control" value="" placeholder="NIC"
+                                                   name="telephone" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="fax">Fax :</label>
-                                            <input id="fax" class="form-control" value="" placeholder="NIC" name="fName" type="text">
+                                            <input id="fax" class="form-control" value="" placeholder="NIC" name="fax"
+                                                   type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -225,7 +228,8 @@
 
                         <div class="wizard-footer">
                             <div class="pull-right">
-                                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Save' onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
+                                <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Save'
+                                       onclick="submitRecords()" style="margin-left: 10px;width: 90%"/>
                             </div>
                             <div class="clearfix"></div>
                         </div>

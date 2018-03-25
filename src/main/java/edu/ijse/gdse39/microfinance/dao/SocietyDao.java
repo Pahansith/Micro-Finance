@@ -1,9 +1,7 @@
 package edu.ijse.gdse39.microfinance.dao;
 
-import edu.ijse.gdse39.microfinance.dto.BranchDto;
 import edu.ijse.gdse39.microfinance.model.SocietyModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,4 +11,6 @@ import java.util.List;
 
 public interface SocietyDao {
     List<SocietyModel> getSocietyByBranch(int branchId);
+
+    boolean save(SocietyModel societyModel) throws Exception;
 }

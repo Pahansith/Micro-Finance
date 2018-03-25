@@ -3,7 +3,6 @@ package edu.ijse.gdse39.microfinance.dao;
 import edu.ijse.gdse39.microfinance.model.GroupModel;
 import edu.ijse.gdse39.microfinance.model.MemberModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

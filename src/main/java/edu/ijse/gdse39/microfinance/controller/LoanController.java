@@ -6,7 +6,6 @@ import edu.ijse.gdse39.microfinance.service.LoanService;
 import edu.ijse.gdse39.microfinance.service.MemberService;
 import edu.ijse.gdse39.microfinance.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -110,10 +109,15 @@ public class LoanController {
         CustomerFeedbackDataDto customerFeedback = loanService.getCustomerFeedback(memId);
         LoanDto customerLoanDetail = loanService.getCustomerLoanDetailsForApproval(Integer.parseInt(memberId));
         MemberDto selectedMember = memberService.getSelectedMember(memId);
+        if (customerFeedback != null && customerLoanDetail != null && selectedMember != null) {
+            session.setAttribute("selectedMember", selectedMember);
+            session.setAttribute("customerFeedback", customerFeedback);
+            session.setAttribute("customerLoanDetail", customerLoanDetail);
+        } else {
+            mv.setViewName("error");
+            return mv;
+        }
 
-        session.setAttribute("selectedMember",selectedMember);
-        session.setAttribute("customerFeedback",customerFeedback);
-        session.setAttribute("customerLoanDetail",customerLoanDetail);
         mv.setViewName("admin/branch-recom");
         return mv;
     }

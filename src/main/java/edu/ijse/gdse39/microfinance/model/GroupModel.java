@@ -1,7 +1,5 @@
 package edu.ijse.gdse39.microfinance.model;
 
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 
 /**

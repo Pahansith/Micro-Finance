@@ -1,7 +1,6 @@
 package edu.ijse.gdse39.microfinance.service;
 
 import edu.ijse.gdse39.microfinance.dto.ProvinceDto;
-import edu.ijse.gdse39.microfinance.model.ProvinceModel;
 
 import java.util.List;
 
