@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="MicroFinance:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="Micro-Finance.war">
-      <element id="artifact" artifact-name="MicroFinance:war exploded" />
-    </root>
-  </artifact>
-</component>
